@@ -1,0 +1,15 @@
+/* ============================================================
+   NEWS — dated list. Only bundled when the folder is enabled.
+   ============================================================ */
+.news{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.news li{display:flex;gap:16px;font-size:15px;align-items:baseline}
+.news time{
+  flex:none;width:78px;color:var(--muted);font-size:12.5px;font-family:var(--mono);
+  letter-spacing:-.2px;padding-top:1px;
+}
+.news span{color:var(--ink-2)}
+
+@media (max-width:640px){
+  .news li{flex-direction:column;gap:1px}
+  .news time{width:auto}
+}

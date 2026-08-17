@@ -1,0 +1,59 @@
+/* ============================================================
+   PROFILE — banner, overlapping photo, name, links
+   Ends with a full-strength rule so it reads as its own block,
+   separate from About.
+   ============================================================ */
+.profile{padding:26px 0 42px;border-bottom:1px solid var(--line)}
+.profile + section{border-top:none}   /* don't double up on the divider */
+
+.banner{
+  margin:0;border-radius:14px;overflow:hidden;
+  aspect-ratio:1884 / 850;
+  background:var(--line-2);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position: center 80%;
+}
+html[data-theme="dark"] .banner img{filter:brightness(.86) saturate(.92)}
+
+/* Photo sits over the bottom-left of the banner. If assets/photo.jpg is
+   missing, the initials underneath show through — no broken image. */
+.profile-head{margin:-54px 0 14px;padding-left:6px}
+.avatar-wrap{
+  width:112px;height:112px;border-radius:50%;overflow:hidden;position:relative;
+  display:grid;place-items:center;
+  box-shadow:0 0 0 4px var(--bg), 0 6px 20px -8px rgba(0,0,0,.45);
+  background:linear-gradient(140deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#000 45%));
+}
+.avatar-fallback{
+  font-family:var(--serif);font-size:38px;font-weight:600;color:#fff;
+  letter-spacing:1px;user-select:none;line-height:1;
+}
+html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
+.avatar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.profile h1{
+  font-family:var(--serif);font-size:clamp(1.95rem,5.2vw,2.6rem);line-height:1.1;
+  margin:0 0 9px;letter-spacing:-.5px;font-weight:600;
+}
+.role{font-size:16.5px;color:var(--ink-2);margin:0 0 4px}
+.role strong{color:var(--ink);font-weight:600}
+.place{
+  font-size:14.5px;color:var(--muted);margin:0 0 18px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block}
+.lede{font-size:17px;color:var(--ink-2);margin:0 0 22px;max-width:62ch}
+
+@media (max-width:640px){
+  .profile{padding:16px 0 34px}
+  .banner{aspect-ratio:16 / 7}
+  .profile-head{margin:-44px 0 12px;padding-left:2px}
+  .avatar-wrap{width:92px;height:92px}
+  .avatar-fallback{font-size:31px}
+}

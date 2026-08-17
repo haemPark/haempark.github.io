@@ -1,0 +1,8 @@
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-box{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;text-align:center;
+}
+.contact-box p{color:var(--ink-2);max-width:48ch;margin:0 auto 18px}

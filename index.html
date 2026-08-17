@@ -5,29 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============================================================
-     EDIT #1 — PAGE TITLE & SEO
-     Change the name and description. Recruiters find you by
-     Googling your name, so put your name first in the title.
+     SITE META — edit here, then run:  python build.py
      ============================================================ -->
-<title>Haemin Lee — ML Researcher</title>
-<meta name="description" content="Haemin Lee — PhD candidate in machine learning. Research on federated learning, generative models, and anomaly detection.">
-<meta name="author" content="Haemin Lee">
+<title>Haemin Park — ML Researcher</title>
+<meta name="description" content="Haemin Park — PhD candidate in machine learning. Federated learning, efficient training, anomaly detection, and diffusion models.">
+<meta name="author" content="Haemin Park">
 
-<!-- Social preview (shows when the link is shared on LinkedIn / Slack / X) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Haemin Lee — ML Researcher">
-<meta property="og:description" content="PhD candidate in machine learning. Federated learning, generative models, anomaly detection.">
+<meta property="og:title" content="Haemin Park — ML Researcher">
+<meta property="og:description" content="PhD candidate in machine learning. Federated learning, efficient training, anomaly detection, diffusion models.">
 <meta property="og:url" content="https://YOUR-USERNAME.github.io/">
-<meta property="og:image" content="https://YOUR-USERNAME.github.io/assets/photo.jpg">
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/assets/banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Favicon: initials, drawn inline. Change the two letters. -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='white' text-anchor='middle'%3EHL%3C/text%3E%3C/svg%3E">
 
 <style>
+/* ---------- styles/01-tokens.css ---------- */
 /* ============================================================
    DESIGN TOKENS
-   Change --accent to re-skin the whole site in one edit.
+   Change --accent here to re-skin the entire site.
    ============================================================ */
 :root{
   --bg:#fbfbf9;
@@ -35,7 +32,7 @@
   --ink:#16161a;
   --ink-2:#3d3d46;
   --muted:#6b6b76;
-  --line:#e7e6e0;
+  --line:#e0dfd8;
   --line-2:#f1f0ec;
   --accent:#0f766e;
   --accent-soft:#e6f2f1;
@@ -52,13 +49,17 @@ html[data-theme="dark"]{
   --ink:#eceef1;
   --ink-2:#c4c8ce;
   --muted:#8b919b;
-  --line:#252930;
+  --line:#2b3037;
   --line-2:#1c1f23;
   --accent:#5eead4;
   --accent-soft:#12312e;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
 }
 
+/* ---------- styles/02-base.css ---------- */
+/* ============================================================
+   BASE — resets, typography, shared section furniture
+   ============================================================ */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
 body{
@@ -77,11 +78,56 @@ img{max-width:100%;display:block}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 
-/* ---------- Skip link (accessibility) ---------- */
 .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:100;border-radius:0 0 8px 0}
 .skip:focus{left:0}
 
-/* ---------- Nav ---------- */
+section{padding:46px 0;border-top:1px solid var(--line-2)}
+h2{
+  font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 24px;
+}
+h3{font-size:16.5px;font-weight:600;margin:0 0 4px;color:var(--ink);line-height:1.4}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+
+/* Shared link-button, used by the profile and contact sections */
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 14px;border-radius:99px;font-size:14px;font-weight:500;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  transition:border-color .15s,color .15s,transform .15s;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px)}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+html[data-theme="dark"] .btn-primary{color:#0e0f11}
+.btn-primary:hover{color:#fff;filter:brightness(1.08)}
+html[data-theme="dark"] .btn-primary:hover{color:#0e0f11}
+
+footer{
+  padding:28px 0 44px;border-top:1px solid var(--line-2);
+  font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+footer a{color:var(--muted)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:36px 0}
+}
+
+@media print{
+  .nav,.theme-btn,.contact-box,.banner{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  section{padding:14px 0;break-inside:avoid}
+  a{color:#000;text-decoration:underline}
+}
+
+/* ---------- styles/03-nav.css ---------- */
+/* ============================================================
+   NAV — sticky header. Links are generated by build.py from the
+   data-nav attribute on each section, so you never edit them here.
+   ============================================================ */
 .nav{
   position:sticky;top:0;z-index:50;
   background:color-mix(in srgb, var(--bg) 82%, transparent);
@@ -113,77 +159,106 @@ img{max-width:100%;display:block}
 html[data-theme="dark"] .icon-sun{display:none}
 html:not([data-theme="dark"]) .icon-moon{display:none}
 
-/* ---------- Hero ---------- */
-.hero{padding:64px 0 12px}
-.hero-grid{display:flex;gap:32px;align-items:flex-start}
-/* Photo. If assets/photo.jpg is missing, the initials underneath show through,
-   so the page never renders with a broken image or a hole in the layout. */
+@media (max-width:640px){ .brand{font-size:15px} }
+
+/* ---------- sections/01-profile/profile.css ---------- */
+/* ============================================================
+   PROFILE — banner, overlapping photo, name, links
+   Ends with a full-strength rule so it reads as its own block,
+   separate from About.
+   ============================================================ */
+.profile{padding:26px 0 42px;border-bottom:1px solid var(--line)}
+.profile + section{border-top:none}   /* don't double up on the divider */
+
+.banner{
+  margin:0;border-radius:14px;overflow:hidden;
+  aspect-ratio:1884 / 850;
+  background:var(--line-2);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position: center 80%;
+}
+html[data-theme="dark"] .banner img{filter:brightness(.86) saturate(.92)}
+
+/* Photo sits over the bottom-left of the banner. If assets/photo.jpg is
+   missing, the initials underneath show through — no broken image. */
+.profile-head{margin:-54px 0 14px;padding-left:6px}
 .avatar-wrap{
-  position:relative;flex:none;width:132px;height:132px;border-radius:50%;overflow:hidden;
-  display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--line);
+  width:112px;height:112px;border-radius:50%;overflow:hidden;position:relative;
+  display:grid;place-items:center;
+  box-shadow:0 0 0 4px var(--bg), 0 6px 20px -8px rgba(0,0,0,.45);
   background:linear-gradient(140deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#000 45%));
 }
 .avatar-fallback{
-  font-family:var(--serif);font-size:44px;font-weight:600;color:#fff;letter-spacing:1px;
-  user-select:none;line-height:1;
+  font-family:var(--serif);font-size:38px;font-weight:600;color:#fff;
+  letter-spacing:1px;user-select:none;line-height:1;
 }
 html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 .avatar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero h1{
-  font-family:var(--serif);font-size:clamp(2rem,5.5vw,2.7rem);line-height:1.1;
-  margin:0 0 10px;letter-spacing:-.5px;font-weight:600;
+
+.profile h1{
+  font-family:var(--serif);font-size:clamp(1.95rem,5.2vw,2.6rem);line-height:1.1;
+  margin:0 0 9px;letter-spacing:-.5px;font-weight:600;
 }
 .role{font-size:16.5px;color:var(--ink-2);margin:0 0 4px}
 .role strong{color:var(--ink);font-weight:600}
-.place{font-size:14.5px;color:var(--muted);margin:0 0 18px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.place{
+  font-size:14.5px;color:var(--muted);margin:0 0 18px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
 .dot{width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block}
 .lede{font-size:17px;color:var(--ink-2);margin:0 0 22px;max-width:62ch}
 
-/* ---------- Link buttons ---------- */
-.links{display:flex;flex-wrap:wrap;gap:8px}
-.btn{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:7px 14px;border-radius:99px;font-size:14px;font-weight:500;
-  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
-  transition:border-color .15s,color .15s,transform .15s;
+@media (max-width:640px){
+  .profile{padding:16px 0 34px}
+  .banner{aspect-ratio:16 / 7}
+  .profile-head{margin:-44px 0 12px;padding-left:2px}
+  .avatar-wrap{width:92px;height:92px}
+  .avatar-fallback{font-size:31px}
 }
-.btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px)}
-.btn svg{width:15px;height:15px;flex:none}
-.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
-html[data-theme="dark"] .btn-primary{color:#0e0f11}
-.btn-primary:hover{color:#fff;filter:brightness(1.08)}
-html[data-theme="dark"] .btn-primary:hover{color:#0e0f11}
 
-/* ---------- Sections ---------- */
-section{padding:44px 0;border-top:1px solid var(--line-2)}
-section:first-of-type{border-top:none}
-h2{
-  font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--muted);margin:0 0 24px;
+/* ---------- sections/02-about/about.css ---------- */
+/* ============================================================
+   ABOUT — prose plus the research-interest grid
+   ============================================================ */
+#about .sub{
+  font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--muted);margin:30px 0 14px;
 }
-h3{font-size:16.5px;font-weight:600;margin:0 0 4px;color:var(--ink);line-height:1.4}
-p{margin:0 0 14px}
-p:last-child{margin-bottom:0}
 
-/* ---------- News ---------- */
-.news{list-style:none;margin:0;padding:0;display:grid;gap:11px}
-.news li{display:flex;gap:16px;font-size:15px;align-items:baseline}
-.news time{
-  flex:none;width:78px;color:var(--muted);font-size:12.5px;font-family:var(--mono);
-  letter-spacing:-.2px;padding-top:1px;
+.interests{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+
+.interest{
+  display:flex;gap:13px;align-items:flex-start;
+  padding:14px 15px;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);
+  transition:border-color .18s,transform .18s;
 }
-.news span{color:var(--ink-2)}
+.interest:hover{border-color:var(--accent);transform:translateY(-1px)}
 
-/* ---------- Timeline (experience / education) ---------- */
-.tl{display:grid;gap:26px}
-.tl-item{display:grid;grid-template-columns:132px 1fr;gap:20px}
-.tl-when{font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:-.2px;padding-top:3px}
-.tl-where{font-size:14.5px;color:var(--muted);margin:0 0 6px}
-.tl-body{font-size:15px;color:var(--ink-2);margin:0}
-.tl-body ul{margin:6px 0 0;padding-left:18px}
-.tl-body li{margin-bottom:4px}
+.interest .ic{
+  flex:none;width:38px;height:38px;border-radius:10px;
+  display:grid;place-items:center;
+  background:var(--accent-soft);color:var(--accent);
+}
+.interest .ic svg{width:22px;height:22px}
 
-/* ---------- Publications ---------- */
+.interest strong{display:block;font-size:14.5px;color:var(--ink);line-height:1.35;margin-bottom:2px}
+.interest span{display:block;font-size:13px;color:var(--muted);line-height:1.45}
+
+@media (max-width:640px){
+  .interests{grid-template-columns:1fr}
+}
+
+/* ---------- sections/03-research/research.css ---------- */
+/* ============================================================
+   RESEARCH — publication list
+   ============================================================ */
 .pub-group{margin-bottom:28px}
 .pub-group:last-child{margin-bottom:0}
 .pub-group h4{
@@ -198,7 +273,10 @@ p:last-child{margin-bottom:0}
 }
 .pub-title{color:var(--ink);font-weight:600;line-height:1.45;margin:0 0 3px}
 .pub-authors{color:var(--ink-2);font-size:14px;margin:0 0 3px;line-height:1.5}
-.pub-authors .me{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:2px}
+.pub-authors .me{
+  color:var(--ink);font-weight:600;text-decoration:underline;
+  text-decoration-color:var(--accent);text-underline-offset:2px;
+}
 .pub-venue{color:var(--muted);font-size:13.5px;font-style:italic;margin:0}
 .pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
 .chip{
@@ -212,8 +290,11 @@ p:last-child{margin-bottom:0}
   vertical-align:1px;white-space:nowrap;
 }
 
-/* ---------- Projects ---------- */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+/* ---------- sections/04-projects/projects.css ---------- */
+/* ============================================================
+   PROJECTS — card grid
+   ============================================================ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px}
 .card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   padding:20px;display:flex;flex-direction:column;
@@ -225,7 +306,19 @@ p:last-child{margin-bottom:0}
 .tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--line-2);padding:2px 8px;border-radius:5px}
 .card-links{display:flex;gap:14px;font-size:13.5px;font-weight:500}
 
-/* ---------- Skills ---------- */
+/* ---------- sections/05-experience/experience.css ---------- */
+/* ============================================================
+   EXPERIENCE — timeline, education, skills
+   ============================================================ */
+.tl{display:grid;gap:26px}
+.tl-heading{margin-top:44px}
+.tl-item{display:grid;grid-template-columns:132px 1fr;gap:20px}
+.tl-when{font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:-.2px;padding-top:3px}
+.tl-where{font-size:14.5px;color:var(--muted);margin:0 0 6px}
+.tl-body{font-size:15px;color:var(--ink-2);margin:0}
+.tl-body ul{margin:6px 0 0;padding-left:18px}
+.tl-body li{margin-bottom:4px}
+
 .skills{display:grid;gap:16px}
 .skill-row{display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:baseline}
 .skill-label{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
@@ -235,59 +328,35 @@ p:last-child{margin-bottom:0}
   background:var(--surface);border:1px solid var(--line);color:var(--ink-2);
 }
 
-/* ---------- Contact / footer ---------- */
+@media (max-width:640px){
+  .tl-item,.skill-row{grid-template-columns:1fr;gap:5px}
+  .tl-when{order:-1}
+}
+
+/* ---------- sections/06-contact/contact.css ---------- */
+/* ============================================================
+   CONTACT
+   ============================================================ */
 .contact-box{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;text-align:center;
 }
 .contact-box p{color:var(--ink-2);max-width:48ch;margin:0 auto 18px}
-footer{
-  padding:28px 0 44px;border-top:1px solid var(--line-2);
-  font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-}
-footer a{color:var(--muted)}
-
-/* ---------- Responsive ---------- */
-@media (max-width:640px){
-  body{font-size:16px}
-  .hero{padding:40px 0 8px}
-  .hero-grid{flex-direction:column;gap:22px;align-items:center;text-align:center}
-  .avatar-wrap{width:108px;height:108px}
-  .avatar-fallback{font-size:36px}
-  .place,.links{justify-content:center}
-  .lede{text-align:left}
-  .tl-item,.skill-row{grid-template-columns:1fr;gap:5px}
-  .tl-when{order:-1}
-  .news li{flex-direction:column;gap:1px}
-  .news time{width:auto}
-  .brand{font-size:15px}
-}
-
-/* ---------- Print (so the page prints as a clean one-pager) ---------- */
-@media print{
-  .nav,.theme-btn,.contact-box{display:none}
-  body{background:#fff;color:#000;font-size:11pt}
-  section{padding:14px 0;break-inside:avoid}
-  .card:hover{transform:none}
-  a{color:#000;text-decoration:underline}
-}
 </style>
 </head>
 
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ============================ NAV ============================ -->
 <nav class="nav">
   <div class="nav-in">
-    <a class="brand" href="#top">Haemin Lee</a>
+    <a class="brand" href="#top">Haemin Park</a>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+<a href="#about">About</a>
+<a href="#research">Research</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
     </div>
     <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -297,75 +366,80 @@ footer a{color:var(--muted)}
 </nav>
 
 <main id="main">
-<div class="wrap" id="top">
-
+<div class="wrap">
 <!-- ============================================================
-     EDIT #2 — HERO
-     Your name, one-line role, location, and a 2–3 sentence pitch.
-     The pitch is the single most-read thing on the page. Say what
-     you work on and what you're looking for.
+     PROFILE  (no data-nav attribute → deliberately not in the nav)
+     Banner:  assets/banner.jpg
+     Photo:   assets/photo.jpg   (initials show if the file is missing)
      ============================================================ -->
-<header class="hero">
-  <div class="hero-grid">
+<header class="profile" id="top">
+
+  <figure class="banner">
+    <img src="assets/banner.jpg" alt="The Grand Basin at Forest Park, St. Louis" loading="eager">
+  </figure>
+
+  <div class="profile-head">
     <div class="avatar-wrap">
       <span class="avatar-fallback" aria-hidden="true">HL</span>
-      <img class="avatar" src="assets/photo.jpg" alt="Portrait of Haemin Lee"
+      <img class="avatar" src="assets/photo.jpg" alt="Portrait of Haemin Park"
            onerror="this.style.display='none'">
     </div>
-    <div>
-      <h1>Haemin Lee</h1>
-      <p class="role"><strong>PhD Candidate, Computer Science</strong> · Northwestern University</p>
-      <p class="place">
-        <span>Evanston, IL</span><span class="dot"></span>
-        <span>Machine Learning &amp; Computer Vision</span><span class="dot"></span>
-        <span>Open to 2026 roles</span>
-      </p>
-      <p class="lede">
-        I build machine learning systems that stay reliable when data is scarce, private, or
-        unevenly distributed — with a focus on federated learning, generative models, and
-        industrial anomaly detection. I'm currently finishing my PhD and looking for research
-        scientist or applied ML roles starting in 2026.
-      </p>
-      <div class="links">
-        <!-- EDIT: replace every href below. Delete any row you don't use. -->
-        <a class="btn btn-primary" href="assets/resume.pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Résumé
-        </a>
-        <a class="btn" href="mailto:you@example.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
-          Email
-        </a>
-        <a class="btn" href="https://github.com/YOUR-USERNAME">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 015.8 0C17 4.8 18 5.1 18 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          GitHub
-        </a>
-        <a class="btn" href="https://scholar.google.com/citations?user=YOUR-ID">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
-          Google Scholar
-        </a>
-        <a class="btn" href="https://linkedin.com/in/YOUR-HANDLE">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 013.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
-          LinkedIn
-        </a>
-      </div>
-    </div>
   </div>
+
+  <h1>Haemin Park</h1>
+  <p class="role"><strong>PhD Candidate, IEMS</strong> · Northwestern University</p>
+  <p class="place">
+    <span>Evanston, IL</span><span class="dot"></span>
+    <span>Machine Learning, Optimization</span><span class="dot"></span>
+  </p>
+
+  <p class="lede">
+    I build machine learning systems that stay reliable when data is scarce, private, or
+    unevenly distributed — federated training, efficient optimization, and generative models
+    for detecting the rare cases that matter. I'm finishing my PhD and looking for research
+    scientist or applied ML roles starting in 2026.
+  </p>
+
+  <div class="links">
+    <!-- EDIT: replace every href. Delete any button you don't want. -->
+    <a class="btn btn-primary" href="assets/resume.pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+      Résumé
+    </a>
+    <a class="btn" href="mailto:you@example.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+      Email
+    </a>
+    <a class="btn" href="https://github.com/YOUR-USERNAME">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 015.8 0C17 4.8 18 5.1 18 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+      GitHub
+    </a>
+    <a class="btn" href="https://scholar.google.com/citations?user=YOUR-ID">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+      Google Scholar
+    </a>
+    <a class="btn" href="https://linkedin.com/in/YOUR-HANDLE">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 013.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+
 </header>
 
+
 <!-- ============================================================
-     EDIT #3 — ABOUT
-     Two short paragraphs. First: what you research and why it
-     matters. Second: how you work / what you want next.
+     ABOUT — two paragraphs, then the research-interest grid.
+     Add or remove an .interest block to change the grid.
      ============================================================ -->
-<section id="about">
+<section id="about" data-nav="About">
   <h2>About</h2>
+
   <p>
-    My research sits at the intersection of <strong>generative modeling</strong> and
-    <strong>distributed learning</strong>. Real deployments rarely give you clean, centralized,
-    balanced data — so I work on methods that learn well anyway: federated clustering under
-    heterogeneous clients, diffusion-based synthesis for rare defect classes, and evaluation
-    protocols that don't quietly overstate performance.
+    My research sits at the intersection of <strong>distributed learning</strong> and
+    <strong>generative modeling</strong>. Real deployments rarely hand you clean, centralized,
+    balanced data — so I work on methods that learn well anyway: training across clients that
+    never share raw data, cutting the compute that training costs, and generating the rare
+    examples a detector needs but a dataset doesn't contain.
   </p>
   <p>
     Before Northwestern I worked on [previous role / lab], where I [one concrete accomplishment
@@ -373,30 +447,78 @@ footer a{color:var(--muted)}
     results that survive contact with a real dataset. Outside research I [one human detail — a
     hobby, a language, a side project].
   </p>
+
+  <h3 class="sub">Research interests</h3>
+  <div class="interests">
+
+    <div class="interest">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.4l7.6 3v6.3c0 4.6-3.2 8.4-7.6 9.4-4.4-1-7.6-4.8-7.6-9.4V5.4l7.6-3z"/>
+          <path d="M12 11.1L9.1 13.6M12 11.1l2.9 2.5"/>
+          <circle cx="12" cy="9.4" r="1.6" fill="currentColor" stroke="none"/>
+          <circle cx="8.4" cy="14.6" r="1.3" fill="currentColor" stroke="none"/>
+          <circle cx="15.6" cy="14.6" r="1.3" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Federated Learning</strong>
+        <span>Training across decentralized clients that never share raw data</span>
+      </div>
+    </div>
+
+    <div class="interest">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Efficient Training</strong>
+        <span>Getting the same accuracy for a fraction of the compute</span>
+      </div>
+    </div>
+
+    <div class="interest">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 17.2h3.8l2.9-10.6 2.9 10.6H22"/>
+          <circle cx="8.7" cy="6.6" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Anomaly Detection</strong>
+        <span>Finding the rare failure in a sea of normal observations</span>
+      </div>
+    </div>
+
+    <div class="interest">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <g fill="currentColor" stroke="none">
+            <circle cx="2.9" cy="5.4" r="1.25"/><circle cx="6.9" cy="3.6" r="1"/>
+            <circle cx="2.4" cy="11.4" r="1.05"/><circle cx="6.6" cy="8.9" r="1.3"/>
+            <circle cx="3.3" cy="17.6" r="1.15"/><circle cx="7.0" cy="14.6" r=".95"/>
+          </g>
+          <path d="M10.2 12h3.3M12.2 10.3l1.7 1.7-1.7 1.7"/>
+          <rect x="16.3" y="7.4" width="6.2" height="9.2" rx="1.7"/>
+        </svg>
+      </span>
+      <div>
+        <strong>Diffusion Models</strong>
+        <span>Turning noise into the data that a downstream model is missing</span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- ============================================================
-     EDIT #4 — NEWS
-     Optional but high-value: shows the page is alive. Keep the
-     5–6 most recent items. Delete this whole <section> if unused.
-     ============================================================ -->
-<section id="news">
-  <h2>News</h2>
-  <ul class="news">
-    <li><time>Aug 2026</time><span>Started building this site — more soon.</span></li>
-    <li><time>Jun 2026</time><span>Presented <em>[Paper Title]</em> at <strong>ICML 2026</strong> in Vancouver.</span></li>
-    <li><time>May 2026</time><span>Paper on federated deep clustering accepted to <strong>[Venue]</strong>.</span></li>
-    <li><time>Feb 2026</time><span>Began a research internship at <strong>[Company]</strong> working on [topic].</span></li>
-    <li><time>Oct 2025</time><span>Passed PhD candidacy exam.</span></li>
-  </ul>
-</section>
 
 <!-- ============================================================
-     EDIT #5 — RESEARCH / PUBLICATIONS
-     Newest first. Bold your own name with <span class="me">.
-     Duplicate a .pub block to add an entry.
+     RESEARCH — newest first. Duplicate an <article class="pub">
+     block to add a paper. Wrap your own name in <span class="me">.
      ============================================================ -->
-<section id="research">
+<section id="research" data-nav="Research">
   <h2>Research</h2>
 
   <div class="pub-group">
@@ -405,8 +527,8 @@ footer a{color:var(--muted)}
     <article class="pub">
       <div class="pub-tag">C3</div>
       <div>
-        <p class="pub-title">Fed-BRDECS: Bias-Robust Deep Embedded Clustering for Federated Settings<span class="status">Under review</span></p>
-        <p class="pub-authors"><span class="me">Haemin Lee</span>, Coauthor Name, Advisor Name</p>
+        <p class="pub-title">Bias-Robust Deep Embedded Clustering for Federated Settings<span class="status">Under review</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Coauthor Name, Advisor Name</p>
         <p class="pub-venue">International Conference on Learning Representations (ICLR), 2027</p>
         <div class="pub-links">
           <a class="chip" href="#">PDF</a>
@@ -420,7 +542,7 @@ footer a{color:var(--muted)}
       <div class="pub-tag">C2</div>
       <div>
         <p class="pub-title">Dual-Branch Diffusion for Few-Shot Industrial Anomaly Synthesis</p>
-        <p class="pub-authors">Coauthor Name, <span class="me">Haemin Lee</span>, Advisor Name</p>
+        <p class="pub-authors">Coauthor Name, <span class="me">Haemin Park</span>, Advisor Name</p>
         <p class="pub-venue">International Conference on Machine Learning (ICML), 2026</p>
         <div class="pub-links">
           <a class="chip" href="#">PDF</a>
@@ -433,8 +555,8 @@ footer a{color:var(--muted)}
     <article class="pub">
       <div class="pub-tag">C1</div>
       <div>
-        <p class="pub-title">On Heterogeneity-Aware Aggregation for Federated k-Means</p>
-        <p class="pub-authors"><span class="me">Haemin Lee</span>, Advisor Name</p>
+        <p class="pub-title">Heterogeneity-Aware Aggregation for Federated Clustering</p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Advisor Name</p>
         <p class="pub-venue">IEEE International Conference on Data Mining (ICDM), 2025</p>
         <div class="pub-links">
           <a class="chip" href="#">PDF</a>
@@ -450,7 +572,7 @@ footer a{color:var(--muted)}
       <div class="pub-tag">J1</div>
       <div>
         <p class="pub-title">A Survey of Privacy-Preserving Clustering Methods</p>
-        <p class="pub-authors"><span class="me">Haemin Lee</span>, Coauthor Name</p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Coauthor Name</p>
         <p class="pub-venue">ACM Computing Surveys, 2025</p>
         <div class="pub-links"><a class="chip" href="#">DOI</a></div>
       </div>
@@ -458,11 +580,11 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+
 <!-- ============================================================
-     EDIT #6 — PROJECTS
-     3–6 is the sweet spot. Every card should have a working link.
+     PROJECTS — 3 to 6 cards. Every card should have a real link.
      ============================================================ -->
-<section id="projects">
+<section id="projects" data-nav="Projects">
   <h2>Projects</h2>
   <div class="cards">
 
@@ -477,7 +599,7 @@ footer a{color:var(--muted)}
     <article class="card">
       <h3>FedCluster Benchmark</h3>
       <p>Reproducible benchmark comparing seven federated clustering methods across controlled
-         non-IID splits. Single command reproduces every table in the paper.</p>
+         non-IID splits. One command reproduces every table in the paper.</p>
       <div class="tags"><span class="tag">Python</span><span class="tag">Federated</span><span class="tag">Benchmark</span></div>
       <div class="card-links"><a href="#">Code →</a><a href="#">Docs →</a></div>
     </article>
@@ -493,11 +615,12 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+
 <!-- ============================================================
-     EDIT #7 — EXPERIENCE & EDUCATION
-     Keep bullets outcome-first. Numbers beat adjectives.
+     EXPERIENCE — roles, education, skills. Bullets outcome-first;
+     numbers beat adjectives.
      ============================================================ -->
-<section id="experience">
+<section id="experience" data-nav="Experience">
   <h2>Experience</h2>
   <div class="tl">
 
@@ -531,7 +654,7 @@ footer a{color:var(--muted)}
 
   </div>
 
-  <h2 style="margin-top:44px">Education</h2>
+  <h2 class="tl-heading">Education</h2>
   <div class="tl">
     <div class="tl-item">
       <div class="tl-when">2022 — 2027</div>
@@ -551,7 +674,7 @@ footer a{color:var(--muted)}
     </div>
   </div>
 
-  <h2 style="margin-top:44px">Skills</h2>
+  <h2 class="tl-heading">Skills</h2>
   <div class="skills">
     <div class="skill-row">
       <div class="skill-label">Languages</div>
@@ -568,33 +691,34 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+
 <!-- ============================================================
-     EDIT #8 — CONTACT
+     CONTACT
      ============================================================ -->
-<section id="contact">
+<section id="contact" data-nav="Contact">
   <h2>Contact</h2>
   <div class="contact-box">
     <p>I'm on the job market for research scientist and applied ML roles starting in 2026.
-       Happy to talk about collaborations, papers, or anything in the list above.</p>
+       Happy to talk about collaborations, papers, or anything above.</p>
     <a class="btn btn-primary" href="mailto:you@example.com">you@example.com</a>
   </div>
 </section>
-
-</div><!-- /.wrap -->
+</div>
 </main>
 
 <div class="wrap">
   <footer>
-    <span>© <span id="year">2026</span> Haemin Lee</span>
+    <span>© <span id="year">2026</span> Haemin Park</span>
     <span>Built with plain HTML · <a href="https://github.com/YOUR-USERNAME/YOUR-USERNAME.github.io">Source</a></span>
   </footer>
 </div>
 
 <script>
-// Year
+// ---------- scripts/main.js ----------
+// Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Theme toggle. Starts from the OS preference; the button flips it for this visit.
+// Theme. Starts from the OS preference; the nav button flips it for this visit.
 // (Intentionally no localStorage — see README if you want the choice to persist.)
 (function () {
   var root = document.documentElement;
@@ -617,7 +741,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
   var queued = false;
   function update() {
     queued = false;
-    var line = 100;   // a section counts as "current" once its top passes this y
+    var line = 100;   // a section becomes "current" once its top passes this y
     var current = null;
     pairs.forEach(function (p) {
       if (p.el.getBoundingClientRect().top <= line) current = p;
@@ -635,22 +759,17 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
 
-<!-- ============================================================
-     EDIT #9 — STRUCTURED DATA (SEO)
-     Helps Google show a rich result when someone searches your
-     name. Update every field; delete if you'd rather not.
-     ============================================================ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Haemin Lee",
+  "name": "Haemin Park",
   "url": "https://YOUR-USERNAME.github.io/",
   "image": "https://YOUR-USERNAME.github.io/assets/photo.jpg",
   "jobTitle": "PhD Candidate, Computer Science",
   "email": "mailto:you@example.com",
   "affiliation": { "@type": "Organization", "name": "Northwestern University" },
-  "knowsAbout": ["Machine Learning", "Federated Learning", "Generative Models", "Computer Vision"],
+  "knowsAbout": ["Federated Learning", "Efficient Training", "Anomaly Detection", "Diffusion Models"],
   "sameAs": [
     "https://github.com/YOUR-USERNAME",
     "https://linkedin.com/in/YOUR-HANDLE",

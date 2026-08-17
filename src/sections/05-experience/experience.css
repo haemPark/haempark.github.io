@@ -1,0 +1,25 @@
+/* ============================================================
+   EXPERIENCE — timeline, education, skills
+   ============================================================ */
+.tl{display:grid;gap:26px}
+.tl-heading{margin-top:44px}
+.tl-item{display:grid;grid-template-columns:132px 1fr;gap:20px}
+.tl-when{font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:-.2px;padding-top:3px}
+.tl-where{font-size:14.5px;color:var(--muted);margin:0 0 6px}
+.tl-body{font-size:15px;color:var(--ink-2);margin:0}
+.tl-body ul{margin:6px 0 0;padding-left:18px}
+.tl-body li{margin-bottom:4px}
+
+.skills{display:grid;gap:16px}
+.skill-row{display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:baseline}
+.skill-label{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.skill-items{display:flex;flex-wrap:wrap;gap:6px}
+.skill-items span{
+  font-size:13.5px;padding:3px 11px;border-radius:99px;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-2);
+}
+
+@media (max-width:640px){
+  .tl-item,.skill-row{grid-template-columns:1fr;gap:5px}
+  .tl-when{order:-1}
+}

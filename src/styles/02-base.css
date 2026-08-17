@@ -1,0 +1,65 @@
+/* ============================================================
+   BASE — resets, typography, shared section furniture
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:100;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+
+section{padding:46px 0;border-top:1px solid var(--line-2)}
+h2{
+  font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 24px;
+}
+h3{font-size:16.5px;font-weight:600;margin:0 0 4px;color:var(--ink);line-height:1.4}
+p{margin:0 0 14px}
+p:last-child{margin-bottom:0}
+
+/* Shared link-button, used by the profile and contact sections */
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 14px;border-radius:99px;font-size:14px;font-weight:500;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  transition:border-color .15s,color .15s,transform .15s;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent);text-decoration:none;transform:translateY(-1px)}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+html[data-theme="dark"] .btn-primary{color:#0e0f11}
+.btn-primary:hover{color:#fff;filter:brightness(1.08)}
+html[data-theme="dark"] .btn-primary:hover{color:#0e0f11}
+
+footer{
+  padding:28px 0 44px;border-top:1px solid var(--line-2);
+  font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+footer a{color:var(--muted)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  section{padding:36px 0}
+}
+
+@media print{
+  .nav,.theme-btn,.contact-box,.banner{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  section{padding:14px 0;break-inside:avoid}
+  a{color:#000;text-decoration:underline}
+}

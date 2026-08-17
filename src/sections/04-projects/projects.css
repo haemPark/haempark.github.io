@@ -1,0 +1,14 @@
+/* ============================================================
+   PROJECTS — card grid
+   ============================================================ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;
+  transition:border-color .18s,transform .18s,box-shadow .18s;
+}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.card p{font-size:14.5px;color:var(--ink-2);margin:0 0 14px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--line-2);padding:2px 8px;border-radius:5px}
+.card-links{display:flex;gap:14px;font-size:13.5px;font-weight:500}
