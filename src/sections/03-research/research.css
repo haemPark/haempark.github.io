@@ -1,13 +1,18 @@
 /* ============================================================
    RESEARCH — publication list
    ============================================================ */
+.research-intro{
+  font-size:15.5px;color:var(--ink-2);max-width:64ch;
+  margin:0 0 28px;padding-left:14px;border-left:2px solid var(--accent-soft);
+}
+
 .pub-group{margin-bottom:28px}
 .pub-group:last-child{margin-bottom:0}
 .pub-group h4{
   font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
   color:var(--ink);margin:0 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line-2);
 }
-.pub{display:grid;grid-template-columns:34px 1fr;gap:12px;margin-bottom:18px;font-size:15px}
+.pub{display:grid;grid-template-columns:34px 1fr;gap:12px;margin-bottom:22px;font-size:15px}
 .pub:last-child{margin-bottom:0}
 .pub-tag{
   font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-soft);
@@ -20,7 +25,12 @@
   text-decoration-color:var(--accent);text-underline-offset:2px;
 }
 .pub-venue{color:var(--muted);font-size:13.5px;font-style:italic;margin:0}
-.pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.pub-note{
+  font-size:14px;color:var(--ink-2);line-height:1.55;
+  margin:8px 0 0;max-width:66ch;
+}
+.pub-note em{color:var(--ink);font-family:var(--mono);font-size:13px;font-style:normal}
+.pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
 .chip{
   font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);
   color:var(--muted);transition:border-color .15s,color .15s;
@@ -30,4 +40,9 @@
   font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
   padding:1px 7px;border-radius:4px;background:var(--line-2);color:var(--muted);margin-left:6px;
   vertical-align:1px;white-space:nowrap;
+}
+
+@media (max-width:640px){
+  .pub{grid-template-columns:1fr;gap:0}
+  .pub-tag{display:inline-block;padding:2px 8px;margin:0 0 6px}
 }

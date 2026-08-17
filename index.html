@@ -7,18 +7,19 @@
 <!-- ============================================================
      SITE META — edit here, then run:  python build.py
      ============================================================ -->
-<title>Haemin Park — ML Researcher</title>
-<meta name="description" content="Haemin Park — PhD candidate in machine learning. Federated learning, efficient training, anomaly detection, and diffusion models.">
+<title>Haemin Park — Efficient &amp; Distributed Machine Learning</title>
+<meta name="description" content="Haemin Park — PhD candidate in Industrial Engineering &amp; Management Sciences at Northwestern University. Efficient distributed training: federated learning, low-rank optimization, class imbalance, and anomaly detection for industrial data.">
 <meta name="author" content="Haemin Park">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Haemin Park — ML Researcher">
-<meta property="og:description" content="PhD candidate in machine learning. Federated learning, efficient training, anomaly detection, diffusion models.">
-<meta property="og:url" content="https://YOUR-USERNAME.github.io/">
-<meta property="og:image" content="https://YOUR-USERNAME.github.io/assets/banner.jpg">
+<meta property="og:title" content="Haemin Park — Efficient &amp; Distributed Machine Learning">
+<meta property="og:description" content="PhD candidate at Northwestern. Federated and continual learning, low-rank and communication-efficient training, and generative models for rare industrial defects.">
+<meta property="og:url" content="https://haempark.github.io/">
+<meta property="og:image" content="https://haempark.github.io/assets/banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='white' text-anchor='middle'%3EHL%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://haempark.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='white' text-anchor='middle'%3EHP%3C/text%3E%3C/svg%3E">
 
 <style>
 /* ---------- styles/01-tokens.css ---------- */
@@ -181,7 +182,7 @@ html:not([data-theme="dark"]) .icon-moon{display:none}
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position: center 80%;
+  object-position: center 67%;
 }
 html[data-theme="dark"] .banner img{filter:brightness(.86) saturate(.92)}
 
@@ -212,7 +213,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
 }
 .dot{width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block}
-.lede{font-size:17px;color:var(--ink-2);margin:0 0 22px;max-width:62ch}
+.lede{font-size:17px;color:var(--ink-2);margin:0 0 22px;max-width:65ch}
 
 @media (max-width:640px){
   .profile{padding:16px 0 34px}
@@ -259,13 +260,18 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 /* ============================================================
    RESEARCH — publication list
    ============================================================ */
+.research-intro{
+  font-size:15.5px;color:var(--ink-2);max-width:64ch;
+  margin:0 0 28px;padding-left:14px;border-left:2px solid var(--accent-soft);
+}
+
 .pub-group{margin-bottom:28px}
 .pub-group:last-child{margin-bottom:0}
 .pub-group h4{
   font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
   color:var(--ink);margin:0 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line-2);
 }
-.pub{display:grid;grid-template-columns:34px 1fr;gap:12px;margin-bottom:18px;font-size:15px}
+.pub{display:grid;grid-template-columns:34px 1fr;gap:12px;margin-bottom:22px;font-size:15px}
 .pub:last-child{margin-bottom:0}
 .pub-tag{
   font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-soft);
@@ -278,7 +284,12 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   text-decoration-color:var(--accent);text-underline-offset:2px;
 }
 .pub-venue{color:var(--muted);font-size:13.5px;font-style:italic;margin:0}
-.pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.pub-note{
+  font-size:14px;color:var(--ink-2);line-height:1.55;
+  margin:8px 0 0;max-width:66ch;
+}
+.pub-note em{color:var(--ink);font-family:var(--mono);font-size:13px;font-style:normal}
+.pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
 .chip{
   font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);
   color:var(--muted);transition:border-color .15s,color .15s;
@@ -290,9 +301,14 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   vertical-align:1px;white-space:nowrap;
 }
 
+@media (max-width:640px){
+  .pub{grid-template-columns:1fr;gap:0}
+  .pub-tag{display:inline-block;padding:2px 8px;margin:0 0 6px}
+}
+
 /* ---------- sections/04-projects/projects.css ---------- */
 /* ============================================================
-   PROJECTS — card grid
+   PROJECTS — one lead card, then a grid of smaller ones
    ============================================================ */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px}
 .card{
@@ -301,10 +317,30 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   transition:border-color .18s,transform .18s,box-shadow .18s;
 }
 .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
-.card p{font-size:14.5px;color:var(--ink-2);margin:0 0 14px;flex:1}
+.card p{font-size:14.5px;color:var(--ink-2);margin:0 0 14px}
+.card .tags{margin-top:auto}
 .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
 .tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--line-2);padding:2px 8px;border-radius:5px}
 .card-links{display:flex;gap:14px;font-size:13.5px;font-weight:500}
+.card-note{font-size:12.5px;color:var(--muted);margin:0!important;font-style:italic}
+
+/* The lead card: full width, slightly richer than the grid cards. */
+.card-lead{
+  margin-bottom:16px;
+  border-left:3px solid var(--accent);
+  background:linear-gradient(180deg, var(--accent-soft) 0%, var(--surface) 120px);
+}
+.card-lead h3{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:17px;margin-bottom:10px}
+.card-badge{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.04em;
+  color:var(--accent);border:1px solid var(--accent);
+  padding:1px 8px;border-radius:99px;background:var(--surface);
+}
+.card-lead p{max-width:70ch}
+.card-lead .card-role{
+  font-size:14px;color:var(--ink-2);
+  padding-left:13px;border-left:2px solid var(--line);
+}
 
 /* ---------- sections/05-experience/experience.css ---------- */
 /* ============================================================
@@ -341,7 +377,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   padding:26px;text-align:center;
 }
-.contact-box p{color:var(--ink-2);max-width:48ch;margin:0 auto 18px}
+.contact-box p{color:var(--ink-2);max-width:56ch;margin:0 auto 18px}
 </style>
 </head>
 
@@ -375,45 +411,49 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 <header class="profile" id="top">
 
   <figure class="banner">
-    <img src="assets/banner.jpg" alt="The Grand Basin at Forest Park, St. Louis" loading="eager">
+    <img src="assets/banner_2.jpg" alt="The Grand Basin at Forest Park, St. Louis" loading="eager">
   </figure>
 
   <div class="profile-head">
     <div class="avatar-wrap">
-      <span class="avatar-fallback" aria-hidden="true">HL</span>
+      <span class="avatar-fallback" aria-hidden="true">HP</span>
       <img class="avatar" src="assets/photo.jpg" alt="Portrait of Haemin Park"
            onerror="this.style.display='none'">
     </div>
   </div>
 
   <h1>Haemin Park</h1>
-  <p class="role"><strong>PhD Candidate, IEMS</strong> · Northwestern University</p>
+  <p class="role"><strong>PhD Candidate, Industrial Engineering &amp; Management Sciences</strong> · Northwestern University</p>
   <p class="place">
     <span>Evanston, IL</span><span class="dot"></span>
-    <span>Machine Learning, Optimization</span><span class="dot"></span>
+    <span>Distributed &amp; Efficient Machine Learning</span>
   </p>
 
   <p class="lede">
-    I build machine learning systems that stay reliable when data is scarce, private, or
-    unevenly distributed — federated training, efficient optimization, and generative models
-    for detecting the rare cases that matter. I'm finishing my PhD and looking for research
-    scientist or applied ML roles starting in 2026.
+    I am driven by complex, non-trivial problems where <strong>theory meets practice</strong>.
+    My research focuses on making large-scale training <strong>effective</strong> and <strong>efficient</strong> theory-oriented methods 
+    that remain robust under real-world challenges such as data heterogeneity and class imbalance.
   </p>
 
   <div class="links">
-    <!-- EDIT: replace every href. Delete any button you don't want. -->
     <a class="btn btn-primary" href="assets/resume.pdf">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-      Résumé
+      CV
     </a>
-    <a class="btn" href="mailto:you@example.com">
+    <a class="btn" href="mailto:haemin.park1@northwestern.edu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
       Email
     </a>
-    <a class="btn" href="https://github.com/YOUR-USERNAME">
+    <a class="btn" href="https://github.com/haemPark">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 015.8 0C17 4.8 18 5.1 18 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
       GitHub
     </a>
+
+    <!-- ============================================================
+         TO ADD GOOGLE SCHOLAR: delete this comment wrapper and paste
+         your profile URL into the href. Same for LinkedIn below.
+         Left commented out so the live site never ships a dead link.
+         ============================================================
     <a class="btn" href="https://scholar.google.com/citations?user=YOUR-ID">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
       Google Scholar
@@ -422,6 +462,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 013.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
       LinkedIn
     </a>
+    ============================================================ -->
   </div>
 
 </header>
@@ -435,17 +476,18 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   <h2>About</h2>
 
   <p>
-    My research sits at the intersection of <strong>distributed learning</strong> and
-    <strong>generative modeling</strong>. Real deployments rarely hand you clean, centralized,
-    balanced data — so I work on methods that learn well anyway: training across clients that
-    never share raw data, cutting the compute that training costs, and generating the rare
-    examples a detector needs but a dataset doesn't contain.
+    I'm a PhD candidate in the <strong>Industrial Engineering &amp; Management Sciences</strong>
+    department at Northwestern University, advised by
+    <a href="https://www.mccormick.northwestern.edu/research-faculty/directory/profiles/klabjan-diego.html">Diego Klabjan</a>.
+    My research sits where optimization theory, machine learning, and large-scale systems meet:
+    I study how to train models <strong>efficiently</strong> and <strong>adaptively</strong> in federated and continual settings,
+    where data is heterogeneous and imbalanced and training is bounded by real constraints such as
+    communication and memory budgets. The goal is to make methods that are both theory grounded and actually deployable.
   </p>
   <p>
-    Before Northwestern I worked on [previous role / lab], where I [one concrete accomplishment
-    with a number in it]. I care about work that ships: reproducible code, honest baselines, and
-    results that survive contact with a real dataset. Outside research I [one human detail — a
-    hobby, a language, a side project].
+    I also like tackling <strong>real-world</strong> problems with messy, challenging data under real constraints.
+    I have worked with large-scale semiconductor manufacturing image data, and multi-dimensional, 
+    unaligned time-series data. I'm also always open to other interesting and challenging problems beyond these too.
   </p>
 
   <h3 class="sub">Research interests</h3>
@@ -462,8 +504,8 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
         </svg>
       </span>
       <div>
-        <strong>Federated Learning</strong>
-        <span>Training across decentralized clients that never share raw data</span>
+        <strong>Federated &amp; Distributed Training</strong>
+        <span>Learning across clients that never share raw data — and staying stable as that population scales</span>
       </div>
     </div>
 
@@ -475,7 +517,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
       </span>
       <div>
         <strong>Efficient Training</strong>
-        <span>Getting the same accuracy for a fraction of the compute</span>
+        <span>Low-rank, low-precision, and communication-efficient methods, with theory for when they help</span>
       </div>
     </div>
 
@@ -487,8 +529,8 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
         </svg>
       </span>
       <div>
-        <strong>Anomaly Detection</strong>
-        <span>Finding the rare failure in a sea of normal observations</span>
+        <strong>Imbalance &amp; Rare Events</strong>
+        <span>Optimization that doesn't ignore the minority class or the one-in-a-thousand defect</span>
       </div>
     </div>
 
@@ -505,8 +547,8 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
         </svg>
       </span>
       <div>
-        <strong>Diffusion Models</strong>
-        <span>Turning noise into the data that a downstream model is missing</span>
+        <strong>Generative Models for Scarce Data</strong>
+        <span>Diffusion models that synthesize the anomalies a detector needs but a dataset doesn't contain</span>
       </div>
     </div>
 
@@ -521,60 +563,100 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 <section id="research" data-nav="Research">
   <h2>Research</h2>
 
+  <p class="research-intro">
+    A common thread runs through all of it: distributed training breaks in specific,
+    diagnosable ways — communication cost, client drift, class imbalance, missing rare
+    classes — and each of these papers isolates one of those failures, explains it
+    theoretically, and fixes it with a method cheap enough to actually run.
+  </p>
+
   <div class="pub-group">
-    <h4>Conference Papers</h4>
+    <h4>Papers</h4>
 
     <article class="pub">
-      <div class="pub-tag">C3</div>
+      <div class="pub-tag">P3</div>
       <div>
-        <p class="pub-title">Bias-Robust Deep Embedded Clustering for Federated Settings<span class="status">Under review</span></p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Coauthor Name, Advisor Name</p>
-        <p class="pub-venue">International Conference on Learning Representations (ICLR), 2027</p>
-        <div class="pub-links">
-          <a class="chip" href="#">PDF</a>
-          <a class="chip" href="#">arXiv</a>
-          <a class="chip" href="#">Code</a>
-        </div>
+        <p class="pub-title">Fed-BRDECS: Privacy-Preserving and Heterogeneity-Aware Federated Deep Embedded Clustering<span class="status">Under review</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
+        <p class="pub-venue">In submission, AAAI</p>
+        <p class="pub-note">
+          Deep embedded clustering needs global soft-assignment statistics — which, in a federated
+          setting, means clients leaking their cluster composition. Replaces that objective with a
+          locally computable sample-stability loss, adds prediction-balanced sampling to stop local
+          majority clusters from dominating, and periodically restarts centroids to escape early
+          collapse. Applied to federated time-series anomaly detection with no inference-time cost.
+        </p>
       </div>
     </article>
 
     <article class="pub">
-      <div class="pub-tag">C2</div>
+      <div class="pub-tag">P2</div>
       <div>
-        <p class="pub-title">Dual-Branch Diffusion for Few-Shot Industrial Anomaly Synthesis</p>
-        <p class="pub-authors">Coauthor Name, <span class="me">Haemin Park</span>, Advisor Name</p>
+        <p class="pub-title">Class-Grouped Normalized Momentum and Faster Hyperparameter Exploration to Tackle Class Imbalance in Federated Learning</p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
         <p class="pub-venue">International Conference on Machine Learning (ICML), 2026</p>
-        <div class="pub-links">
-          <a class="chip" href="#">PDF</a>
-          <a class="chip" href="#">Poster</a>
-          <a class="chip" href="#">Code</a>
-        </div>
+        <p class="pub-note">
+          Privacy rules out the usual fixes for long-tailed data, so FedCGNM attacks imbalance at the
+          optimizer instead: group classes by minimizing within-group variance, keep one momentum per
+          group, normalize each to unit length. Every group gets equal pull without the scaling
+          mismatch that breaks per-class normalization at scale. Ships with a convergence analysis
+          under time-varying resampling rates and FedHOO, a bandit-based tuner that exploits
+          federated parallelism to evaluate many rate combinations at linear cost. Evaluated on four
+          long-tailed benchmarks and a proprietary chip-defect dataset.
+        </p>
       </div>
     </article>
 
     <article class="pub">
-      <div class="pub-tag">C1</div>
+      <div class="pub-tag">P1</div>
       <div>
-        <p class="pub-title">Heterogeneity-Aware Aggregation for Federated Clustering</p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Advisor Name</p>
-        <p class="pub-venue">IEEE International Conference on Data Mining (ICDM), 2025</p>
+        <p class="pub-title">Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization<span class="status">Under review</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
+        <p class="pub-venue">Under review, Transactions on Machine Learning Research (TMLR)</p>
+        <p class="pub-note">
+          The first theoretical study of rank structure in federated learning: using random matrix
+          theory, I show a client's Hessian carries a strictly higher stable rank than the server's,
+          and that restricting local updates to a low-rank subspace improves cross-client gradient
+          alignment. FedLoRU turns that into an algorithm — clients optimize low-rank factors, the
+          server accumulates them into a higher-rank model — cutting communication from
+          <em>Kmn</em> to <em>Kr(m+n)</em> while matching full-rank accuracy, and beating FedAvg
+          outright once the client count passes 100.
+        </p>
         <div class="pub-links">
-          <a class="chip" href="#">PDF</a>
-          <a class="chip" href="#">DOI</a>
+          <a class="chip" href="https://arxiv.org/abs/2409.12371">arXiv</a>
         </div>
       </div>
     </article>
   </div>
 
   <div class="pub-group">
-    <h4>Journal Articles</h4>
+    <h4>Works in Progress</h4>
+
     <article class="pub">
-      <div class="pub-tag">J1</div>
+      <div class="pub-tag">W2</div>
       <div>
-        <p class="pub-title">A Survey of Privacy-Preserving Clustering Methods</p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Coauthor Name</p>
-        <p class="pub-venue">ACM Computing Surveys, 2025</p>
-        <div class="pub-links"><a class="chip" href="#">DOI</a></div>
+        <p class="pub-title">The Advantage of Low-Precision and Low-Rank Training in Distributed Systems</p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
+        <p class="pub-venue">Manuscript in preparation</p>
+        <p class="pub-note">
+          Establishing that resource-efficient training — low precision, low rank — does not merely
+          approximate full-resource training in large distributed settings but can outperform it,
+          with a formal analysis of how that advantage scales.
+        </p>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="pub-tag">W1</div>
+      <div>
+        <p class="pub-title">Federated Continual Learning with Decoupled LoRA</p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
+        <p class="pub-venue">Manuscript in preparation</p>
+        <p class="pub-note">
+          Decoupling the magnitude and direction of low-rank updates and combining them with
+          sharpness-aware minimization, so a model adapts quickly to new tasks while flatter,
+          more stable update geometry limits catastrophic forgetting.
+        </p>
       </div>
     </article>
   </div>
@@ -582,34 +664,76 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 
 
 <!-- ============================================================
-     PROJECTS — 3 to 6 cards. Every card should have a real link.
+     PROJECTS — 3 to 6 cards. The Intel system deliberately has no
+     code link; it's proprietary. The rest point at papers.
      ============================================================ -->
 <section id="projects" data-nav="Projects">
   <h2>Projects</h2>
+
+  <article class="card card-lead">
+    <h3>Industrial ML Automation System <span class="card-badge">Intel</span></h3>
+    <p>
+      An end-to-end machine learning system for semiconductor manufacturing, built through my
+      Intel internships and the Northwestern–Intel research project. Tens of thousands of lines
+      of Python over <strong>millions of sensor and image samples</strong> that are extremely
+      imbalanced and structurally unlike standard vision datasets — defects are small, local,
+      geometric, and rare, so ImageNet intuitions mostly don't transfer.
+    </p>
+    <p>
+      Three pieces work together: <strong>continual learning</strong> so deployed models keep
+      adapting as production shifts, <strong>federated learning</strong> so distributed
+      manufacturing data trains a shared model without leaving its site, and
+      <strong>diffusion models</strong> that generate realistic rare anomalies to fill in what
+      the dataset never captured.
+    </p>
+    <p class="card-role">
+      Working with one or two researchers and managers, I contribute over 90% of the technical
+      work — leading method development, implementation, experimentation, evaluation, and
+      analysis, while collaborators supply domain requirements and feedback. Two of my papers
+      are evaluated on data from this system.
+    </p>
+    <div class="tags"><span class="tag">PyTorch</span><span class="tag">Federated</span><span class="tag">Continual</span><span class="tag">Diffusion</span><span class="tag">Anomaly Detection</span></div>
+    <p class="card-note">Proprietary — no public code.</p>
+  </article>
+
   <div class="cards">
 
     <article class="card">
-      <h3>DualAnoDiff</h3>
-      <p>Diffusion pipeline that generates paired defect images and pixel-level masks from as few
-         as five real samples, lifting downstream segmentation IoU by 12 points on MVTec-AD.</p>
-      <div class="tags"><span class="tag">PyTorch</span><span class="tag">Diffusion</span><span class="tag">CV</span></div>
-      <div class="card-links"><a href="#">Code →</a><a href="#">Paper →</a></div>
+      <h3>FedLoRU</h3>
+      <p>Federated training where clients optimize low-rank factors and the server accumulates
+         them into a higher-rank model. Communicates as little as 21% of the full-rank parameter
+         count at matched accuracy, and overtakes full-rank FedAvg outright once the federation
+         passes 100 clients. Composes cleanly with quantization.</p>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">LoRA</span><span class="tag">RMT</span></div>
+      <div class="card-links"><a href="https://arxiv.org/abs/2409.12371">Paper →</a></div>
     </article>
 
     <article class="card">
-      <h3>FedCluster Benchmark</h3>
-      <p>Reproducible benchmark comparing seven federated clustering methods across controlled
-         non-IID splits. One command reproduces every table in the paper.</p>
-      <div class="tags"><span class="tag">Python</span><span class="tag">Federated</span><span class="tag">Benchmark</span></div>
-      <div class="card-links"><a href="#">Code →</a><a href="#">Docs →</a></div>
+      <h3>ViT Selection Pipeline</h3>
+      <p>Evaluation pipeline that picks Vision Transformer architectures for manufacturing
+         visual inspection under hard deployment constraints — inference latency, energy
+         efficiency, and robustness to class imbalance — plus adaptive selection criteria for
+         choosing among them in production.</p>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">Benchmarking</span></div>
+      <p class="card-note">Built at Intel, 2025.</p>
     </article>
 
     <article class="card">
-      <h3>[Third Project]</h3>
-      <p>One or two sentences. Lead with what it does and the outcome — a number, a benchmark, a
-         user count — not the tech stack. The stack goes in the tags below.</p>
-      <div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div>
-      <div class="card-links"><a href="#">Code →</a><a href="#">Demo →</a></div>
+      <h3>FedHOO</h3>
+      <p>Hyperparameter tuning built for federations too small to brute-force. An X-armed-bandit
+         search exploits the parallelism already present across clients, evaluating many
+         candidate configurations per round at linear rather than combinatorial cost.</p>
+      <div class="tags"><span class="tag">Bandits</span><span class="tag">HPO</span><span class="tag">Federated</span></div>
+      <p class="card-note">Part of the ICML 2026 paper.</p>
+    </article>
+
+    <article class="card">
+      <h3>Fed-BRDECS</h3>
+      <p>Federated deep clustering on unlabeled, non-IID data without any client ever
+         transmitting its cluster statistics. Doubles as a representation backbone for
+         federated time-series anomaly detection, at no inference-time cost.</p>
+      <div class="tags"><span class="tag">PyTorch</span><span class="tag">Clustering</span><span class="tag">Privacy</span></div>
+      <p class="card-note">Under review — paper on request.</p>
     </article>
 
   </div>
@@ -625,28 +749,66 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   <div class="tl">
 
     <div class="tl-item">
-      <div class="tl-when">2026 — 2026</div>
+      <div class="tl-when">Jun – Sep 2026</div>
       <div>
-        <h3>Research Intern</h3>
-        <p class="tl-where">[Company], [City]</p>
+        <h3>AI Research Engineering Intern</h3>
+        <p class="tl-where">Intel Corporation · Chandler, AZ</p>
         <div class="tl-body">
           <ul>
-            <li>Built [thing] that improved [metric] by [X%] over the production baseline.</li>
-            <li>Shipped [artifact] now used by [team / N engineers].</li>
+            <li>Researched diffusion-based synthetic defect generation for manufacturing images,
+                targeting the scarcity of labeled anomalies and the distinctive geometry of chip defects.</li>
+            <li>Built a rare-event-driven anomaly generation framework that models defects as
+                localized deviations from normal images, to improve downstream defect detection.</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-when">2022 — Present</div>
+      <div class="tl-when">Jun – Sep 2025</div>
       <div>
-        <h3>Graduate Research Assistant</h3>
-        <p class="tl-where">Northwestern University · [Lab Name]</p>
+        <h3>AI Research Engineering Intern</h3>
+        <p class="tl-where">Intel Corporation · Chandler, AZ</p>
         <div class="tl-body">
           <ul>
-            <li>Lead author on [N] papers in federated learning and generative modeling.</li>
-            <li>Mentored [N] undergraduate researchers; [outcome].</li>
+            <li>Built an evaluation pipeline identifying Vision Transformer architectures that
+                balance inference latency, energy efficiency, and class-imbalance robustness.</li>
+            <li>Proposed adaptive model selection criteria for deploying those models in
+                manufacturing-quality visual inspection.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-when">2022 – Present</div>
+      <div>
+        <h3>Graduate Research Assistant</h3>
+        <p class="tl-where">Northwestern University · Advisor: Diego Klabjan</p>
+        <div class="tl-body">
+          <ul>
+            <li>Lead author on five works in federated and efficient training, including an ICML 2026
+                paper and submissions to TMLR and AAAI.</li>
+            <li>Produced the first theoretical characterization of rank structure in federated
+                learning, connecting client Hessian stable rank to the regularization effect of
+                low-rank updates.</li>
+            <li>Lead the Northwestern–Intel research project on industrial ML automation,
+                contributing over 90% of the technical work.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-when">2020 – 2021</div>
+      <div>
+        <h3>D-App &amp; AI Developer</h3>
+        <p class="tl-where">Common Computer · Seoul, South Korea</p>
+        <div class="tl-body">
+          <ul>
+            <li>Built a blockchain-based social application launched in Japan at a blockchain,
+                cloud computing, and AI startup.</li>
+            <li>Worked on cloud-computing resource allocation and online ad-allocation problems.</li>
           </ul>
         </div>
       </div>
@@ -657,19 +819,21 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   <h2 class="tl-heading">Education</h2>
   <div class="tl">
     <div class="tl-item">
-      <div class="tl-when">2022 — 2027</div>
+      <div class="tl-when">2022 – 2027</div>
       <div>
-        <h3>PhD, Computer Science</h3>
-        <p class="tl-where">Northwestern University · Advisor: [Prof. Name]</p>
-        <p class="tl-body">Thesis: <em>[Working title]</em></p>
+        <h3>PhD, Industrial Engineering &amp; Management Sciences</h3>
+        <p class="tl-where">Northwestern University · Evanston, IL · Advisor: Diego Klabjan</p>
+        <p class="tl-body">Expected June 2027 · GPA 3.88 / 4.00. Research on efficient distributed
+           training — federated, continual, low-rank, and low-precision methods for heterogeneous
+           and imbalanced data.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-when">2018 — 2022</div>
+      <div class="tl-when">2016 – 2022</div>
       <div>
-        <h3>BS, [Major]</h3>
-        <p class="tl-where">[University], [City]</p>
-        <p class="tl-body">[Honors, GPA if strong, or a notable thesis.]</p>
+        <h3>BEng, Industrial Engineering &amp; Mathematics</h3>
+        <p class="tl-where">Seoul National University · Seoul, South Korea</p>
+        <p class="tl-body">Double major · GPA 3.87 / 4.3 over 142 credits.</p>
       </div>
     </div>
   </div>
@@ -678,15 +842,19 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   <div class="skills">
     <div class="skill-row">
       <div class="skill-label">Languages</div>
-      <div class="skill-items"><span>Python</span><span>C++</span><span>SQL</span><span>Bash</span><span>Korean (native)</span></div>
+      <div class="skill-items"><span>Python</span><span>C</span><span>R</span><span>Java</span><span>JavaScript</span><span>Korean (native)</span></div>
     </div>
     <div class="skill-row">
       <div class="skill-label">ML</div>
-      <div class="skill-items"><span>PyTorch</span><span>JAX</span><span>Hugging Face</span><span>scikit-learn</span><span>Diffusion models</span><span>Federated learning</span></div>
+      <div class="skill-items"><span>PyTorch</span><span>Federated learning</span><span>Continual learning</span><span>Diffusion models</span><span>LLM fine-tuning</span><span>Transformers for time series</span><span>Compression &amp; sparsification</span></div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Theory</div>
+      <div class="skill-items"><span>Nonlinear optimization</span><span>Random matrix theory</span><span>Stochastic processes</span><span>Measure theory</span><span>Non-parametric statistics</span><span>Time-series analysis</span></div>
     </div>
     <div class="skill-row">
       <div class="skill-label">Infra</div>
-      <div class="skill-items"><span>Docker</span><span>Slurm</span><span>Weights &amp; Biases</span><span>Git</span><span>AWS</span></div>
+      <div class="skill-items"><span>Docker</span><span>Git</span><span>CUDA</span><span>Multi-GPU training</span><span>React</span><span>Firebase</span></div>
     </div>
   </div>
 </section>
@@ -698,9 +866,10 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 <section id="contact" data-nav="Contact">
   <h2>Contact</h2>
   <div class="contact-box">
-    <p>I'm on the job market for research scientist and applied ML roles starting in 2026.
-       Happy to talk about collaborations, papers, or anything above.</p>
-    <a class="btn btn-primary" href="mailto:you@example.com">you@example.com</a>
+    <p>I'm finishing my PhD at Northwestern and always glad to talk — about research scientist
+       and applied ML roles, collaborations, or any of the work above. The fastest way to
+       reach me is email.</p>
+    <a class="btn btn-primary" href="mailto:haemin.park1@northwestern.edu">haemin.park1@northwestern.edu</a>
   </div>
 </section>
 </div>
@@ -709,7 +878,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 <div class="wrap">
   <footer>
     <span>© <span id="year">2026</span> Haemin Park</span>
-    <span>Built with plain HTML · <a href="https://github.com/YOUR-USERNAME/YOUR-USERNAME.github.io">Source</a></span>
+    <span>Built with plain HTML · <a href="https://github.com/haemPark/haempark.github.io">Source</a></span>
   </footer>
 </div>
 
@@ -764,16 +933,23 @@ document.getElementById('year').textContent = new Date().getFullYear();
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Haemin Park",
-  "url": "https://YOUR-USERNAME.github.io/",
-  "image": "https://YOUR-USERNAME.github.io/assets/photo.jpg",
-  "jobTitle": "PhD Candidate, Computer Science",
-  "email": "mailto:you@example.com",
+  "url": "https://haempark.github.io/",
+  "image": "https://haempark.github.io/assets/photo.jpg",
+  "jobTitle": "PhD Candidate, Industrial Engineering and Management Sciences",
+  "email": "mailto:haemin.park1@northwestern.edu",
   "affiliation": { "@type": "Organization", "name": "Northwestern University" },
-  "knowsAbout": ["Federated Learning", "Efficient Training", "Anomaly Detection", "Diffusion Models"],
+  "alumniOf": { "@type": "Organization", "name": "Seoul National University" },
+  "knowsAbout": [
+    "Federated Learning",
+    "Efficient Training",
+    "Distributed Optimization",
+    "Continual Learning",
+    "Class Imbalance",
+    "Anomaly Detection",
+    "Diffusion Models"
+  ],
   "sameAs": [
-    "https://github.com/YOUR-USERNAME",
-    "https://linkedin.com/in/YOUR-HANDLE",
-    "https://scholar.google.com/citations?user=YOUR-ID"
+    "https://github.com/haemPark"
   ]
 }
 </script>
