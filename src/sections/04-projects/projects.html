@@ -1,75 +1,35 @@
 <!-- ============================================================
-     PROJECTS — 3 to 6 cards. The Intel system deliberately has no
-     code link; it's proprietary. The rest point at papers.
-     ============================================================ -->
-<section id="projects" data-nav="Projects">
-  <h2>Projects</h2>
-
+ PROJECTS — one card. Proprietary system, deliberately no code
+ link. Papers from it live in the Publications section.
+ ============================================================ -->
+<section id="projects" data-nav="Project">
+  <h2>Project</h2>
   <article class="card card-lead">
-    <h3>Industrial ML Automation System <span class="card-badge">Intel</span></h3>
+    <h3>Industrial Chip Anomaly Detection <span class="card-badge">Intel</span></h3>
     <p>
-      An end-to-end machine learning system for semiconductor manufacturing, built through my
-      Intel internships and the Northwestern–Intel research project. Tens of thousands of lines
-      of Python over <strong>millions of sensor and image samples</strong> that are extremely
-      imbalanced and structurally unlike standard vision datasets — defects are small, local,
-      geometric, and rare, so ImageNet intuitions mostly don't transfer.
+      An end-to-end machine learning system for semiconductor defect and anomaly detection,
+      built through my Intel internships and the Northwestern–Intel research project. Tens of
+      thousands of lines of Python over <strong>millions of sensor and image samples</strong>
+      that are extremely imbalanced and structurally unlike standard vision datasets — defects
+      are small, local, geometric, and rare, so ImageNet intuitions mostly don't transfer.
     </p>
     <p>
-      Three pieces work together: <strong>continual learning</strong> so deployed models keep
-      adapting as production shifts, <strong>federated learning</strong> so distributed
-      manufacturing data trains a shared model without leaving its site, and
-      <strong>diffusion models</strong> that generate realistic rare anomalies to fill in what
-      the dataset never captured.
+      Three pieces work together: <strong>federated learning</strong>, so distributed
+      manufacturing sites train a shared defect model without images ever leaving the fab —
+      under class imbalance severe enough to break standard aggregation;
+      <strong>continual learning</strong>, so models already in production keep adapting as the
+      process drifts, without retraining from scratch or forgetting what earlier lines taught
+      them; and <strong>unsupervised time-series anomaly detection</strong> over multivariate
+      sensor streams, where nothing is labeled and the failure modes aren't known in advance.
     </p>
     <p class="card-role">
       Working with one or two researchers and managers, I contribute over 90% of the technical
       work — leading method development, implementation, experimentation, evaluation, and
-      analysis, while collaborators supply domain requirements and feedback. Two of my papers
-      are evaluated on data from this system.
+      analysis, while collaborators supply domain requirements and feedback. Several papers in
+      <a href="#publications">Publications</a> come out of this system, two of them evaluated
+      directly on its data.
     </p>
-    <div class="tags"><span class="tag">PyTorch</span><span class="tag">Federated</span><span class="tag">Continual</span><span class="tag">Diffusion</span><span class="tag">Anomaly Detection</span></div>
+    <div class="tags"><span class="tag">PyTorch</span><span class="tag">Federated</span><span class="tag">Continual</span><span class="tag">Time-Series</span><span class="tag">Anomaly Detection</span></div>
     <p class="card-note">Proprietary — no public code.</p>
   </article>
-
-  <div class="cards">
-
-    <article class="card">
-      <h3>FedLoRU</h3>
-      <p>Federated training where clients optimize low-rank factors and the server accumulates
-         them into a higher-rank model. Communicates as little as 21% of the full-rank parameter
-         count at matched accuracy, and overtakes full-rank FedAvg outright once the federation
-         passes 100 clients. Composes cleanly with quantization.</p>
-      <div class="tags"><span class="tag">PyTorch</span><span class="tag">LoRA</span><span class="tag">RMT</span></div>
-      <div class="card-links"><a href="https://arxiv.org/abs/2409.12371">Paper →</a></div>
-    </article>
-
-    <article class="card">
-      <h3>ViT Selection Pipeline</h3>
-      <p>Evaluation pipeline that picks Vision Transformer architectures for manufacturing
-         visual inspection under hard deployment constraints — inference latency, energy
-         efficiency, and robustness to class imbalance — plus adaptive selection criteria for
-         choosing among them in production.</p>
-      <div class="tags"><span class="tag">PyTorch</span><span class="tag">ViT</span><span class="tag">Benchmarking</span></div>
-      <p class="card-note">Built at Intel, 2025.</p>
-    </article>
-
-    <article class="card">
-      <h3>FedHOO</h3>
-      <p>Hyperparameter tuning built for federations too small to brute-force. An X-armed-bandit
-         search exploits the parallelism already present across clients, evaluating many
-         candidate configurations per round at linear rather than combinatorial cost.</p>
-      <div class="tags"><span class="tag">Bandits</span><span class="tag">HPO</span><span class="tag">Federated</span></div>
-      <p class="card-note">Part of the ICML 2026 paper.</p>
-    </article>
-
-    <article class="card">
-      <h3>Fed-BRDECS</h3>
-      <p>Federated deep clustering on unlabeled, non-IID data without any client ever
-         transmitting its cluster statistics. Doubles as a representation backbone for
-         federated time-series anomaly detection, at no inference-time cost.</p>
-      <div class="tags"><span class="tag">PyTorch</span><span class="tag">Clustering</span><span class="tag">Privacy</span></div>
-      <p class="card-note">Under review — paper on request.</p>
-    </article>
-
-  </div>
 </section>

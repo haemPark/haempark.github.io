@@ -18,15 +18,15 @@
     <article class="pub">
       <div class="pub-tag">P3</div>
       <div>
-        <p class="pub-title">Fed-BRDECS: Privacy-Preserving and Heterogeneity-Aware Federated Deep Embedded Clustering<span class="status">Under review</span></p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">In submission, AAAI</p>
+        <p class="pub-title">Privacy-Preserving and Heterogeneity-Aware Federated Deep Clustering<span class="status">Under review</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
+        <p class="pub-venue">Under Review</p>
         <p class="pub-note">
           Deep embedded clustering needs global soft-assignment statistics — which, in a federated
           setting, means clients leaking their cluster composition. Replaces that objective with a
           locally computable sample-stability loss, adds prediction-balanced sampling to stop local
-          majority clusters from dominating, and periodically restarts centroids to escape early
-          collapse. Applied to federated time-series anomaly detection with no inference-time cost.
+          majority clusters from dominating, and periodically restarting mechanism to escape early
+          collapse. Applied to federated time-series anomaly detection with no additional inference-time cost.
         </p>
       </div>
     </article>
@@ -41,10 +41,8 @@
           Privacy rules out the usual fixes for long-tailed data, so FedCGNM attacks imbalance at the
           optimizer instead: group classes by minimizing within-group variance, keep one momentum per
           group, normalize each to unit length. Every group gets equal pull without the scaling
-          mismatch that breaks per-class normalization at scale. Ships with a convergence analysis
-          under time-varying resampling rates and FedHOO, a bandit-based tuner that exploits
-          federated parallelism to evaluate many rate combinations at linear cost. Evaluated on four
-          long-tailed benchmarks and a proprietary chip-defect dataset.
+          mismatch. Come up with a convergence analysis under time-varying resampling rates and FedHOO, a bandit-based tuner that exploits
+          federated parallelism to evaluate many rate combinations at linear cost.
         </p>
       </div>
     </article>
@@ -54,15 +52,15 @@
       <div>
         <p class="pub-title">Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization<span class="status">Under review</span></p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">Under review, Transactions on Machine Learning Research (TMLR)</p>
+        <p class="pub-venue">Under review</p>
         <p class="pub-note">
           The first theoretical study of rank structure in federated learning: using random matrix
           theory, I show a client's Hessian carries a strictly higher stable rank than the server's,
           and that restricting local updates to a low-rank subspace improves cross-client gradient
           alignment. FedLoRU turns that into an algorithm — clients optimize low-rank factors, the
-          server accumulates them into a higher-rank model — cutting communication from
-          <em>Kmn</em> to <em>Kr(m+n)</em> while matching full-rank accuracy, and beating FedAvg
-          outright once the client count passes 100.
+          server accumulates them into a higher-rank model — cutting communication cost while matching full-rank accuracy.
+          Interesting finding that theory and empirical results coincide: lower-rank updates perform
+          better than full-rank updates when the number of clients is large.
         </p>
         <div class="pub-links">
           <a class="chip" href="https://arxiv.org/abs/2409.12371">arXiv</a>
@@ -77,13 +75,12 @@
     <article class="pub">
       <div class="pub-tag">W2</div>
       <div>
-        <p class="pub-title">The Advantage of Low-Precision and Low-Rank Training in Distributed Systems</p>
+        <p class="pub-title">Adaptive Low-Precision and Low-Rank Training in Federated Learnin</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">Manuscript in preparation</p>
         <p class="pub-note">
-          Establishing that resource-efficient training — low precision, low rank — does not merely
-          approximate full-resource training in large distributed settings but can outperform it,
-          with a formal analysis of how that advantage scales.
+          Uncovers an implicit regularization mechanism driven by dynamic precision and rank adaptivity 
+          in distributed systems, proving theoretically and empirically that budget-constrained training 
+          can match or surpass full-resource baselines.
         </p>
       </div>
     </article>
@@ -93,7 +90,6 @@
       <div>
         <p class="pub-title">Federated Continual Learning with Decoupled LoRA</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">Manuscript in preparation</p>
         <p class="pub-note">
           Decoupling the magnitude and direction of low-rank updates and combining them with
           sharpness-aware minimization, so a model adapts quickly to new tasks while flatter,
