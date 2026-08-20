@@ -563,12 +563,12 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 <section id="research" data-nav="Research">
   <h2>Research</h2>
 
-  <p class="research-intro">
+  <!-- <p class="research-intro">
     A common thread runs through all of it: distributed training breaks in specific,
     diagnosable ways — communication cost, client drift, class imbalance, missing rare
     classes — and each of these papers isolates one of those failures, explains it
     theoretically, and fixes it with a method cheap enough to actually run.
-  </p>
+  </p> -->
 
   <div class="pub-group">
     <h4>Papers</h4>
@@ -602,6 +602,9 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
           mismatch. Come up with a convergence analysis under time-varying resampling rates and FedHOO, a bandit-based tuner that exploits
           federated parallelism to evaluate many rate combinations at linear cost.
         </p>
+        <div class="pub-links">
+          <a class="chip" href="https://openreview.net/pdf?id=njBsluG3Nn">Paper</a>
+        </div>
       </div>
     </article>
 
@@ -728,10 +731,10 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
         <p class="tl-where">Intel Corporation · Chandler, AZ</p>
         <div class="tl-body">
           <ul>
-            <li>Built an evaluation pipeline identifying Vision Transformer architectures that
-                balance inference latency, energy efficiency, and class-imbalance robustness.</li>
-            <li>Proposed adaptive model selection criteria for deploying those models in
-                manufacturing-quality visual inspection.</li>
+            <li>Establish an evaluation pipeline identifying Vision Transformer architectures that
+                balance inference latency, energy efficiency, and class-imbalance robustness for chip images.</li>
+            <li>Established a robust, imbalance-aware model training strategy integrating hybrid resampling,
+                scheduled learning, and advanced optimization techniques.</li>
           </ul>
         </div>
       </div>
@@ -771,7 +774,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
       </div>
     </div>
   </div>
-
+<!-- 
   <h2 class="tl-heading">Skills</h2>
   <div class="skills">
     <div class="skill-row">
@@ -790,7 +793,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
       <div class="skill-label">Infra</div>
       <div class="skill-items"><span>Docker</span><span>Git</span><span>CUDA</span><span>Multi-GPU training</span><span>React</span><span>Firebase</span></div>
     </div>
-  </div>
+  </div> -->
 </section>
 
 
