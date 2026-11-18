@@ -7,13 +7,13 @@
 <!-- ============================================================
      SITE META — edit here, then run:  python build.py
      ============================================================ -->
-<title>Haemin Park — Efficient &amp; Distributed Machine Learning</title>
-<meta name="description" content="Haemin Park — PhD candidate in Industrial Engineering &amp; Management Sciences at Northwestern University. Efficient distributed training: federated learning, low-rank optimization, class imbalance, and anomaly detection for industrial data.">
+<title>Haemin Park — Efficient &amp; Adaptive Machine Learning</title>
+<meta name="description" content="Haemin Park — PhD candidate in Industrial Engineering &amp; Management Sciences at Northwestern University. Efficient and adaptive machine learning through optimization theory and algorithm design: low-rank adaptation, federated and continual learning, and efficient generative models.">
 <meta name="author" content="Haemin Park">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Haemin Park — Efficient &amp; Distributed Machine Learning">
-<meta property="og:description" content="PhD candidate at Northwestern. Federated and continual learning, low-rank and communication-efficient training, and generative models for rare industrial defects.">
+<meta property="og:title" content="Haemin Park — Efficient &amp; Adaptive Machine Learning">
+<meta property="og:description" content="PhD candidate at Northwestern (ICML 2026, TMLR). Low-rank adaptation, federated and continual learning, and efficient generative models. Graduating June 2027.">
 <meta property="og:url" content="https://haempark.github.io/">
 <meta property="og:image" content="https://haempark.github.io/assets/banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -213,7 +213,20 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   display:flex;align-items:center;gap:8px;flex-wrap:wrap;
 }
 .dot{width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block}
-.lede{font-size:17px;color:var(--ink-2);margin:0 0 22px;max-width:65ch}
+.lede{font-size:17px;color:var(--ink-2);margin:0 0 16px;max-width:65ch}
+
+/* At-a-glance facts under the lede */
+.highlights{
+  list-style:none;margin:0 0 22px;padding:0;
+  display:flex;flex-wrap:wrap;gap:6px 18px;
+  font-size:14px;color:var(--muted);
+}
+.highlights li{display:flex;align-items:center;gap:7px}
+.highlights li::before{
+  content:"";width:6px;height:6px;border-radius:2px;flex:none;
+  background:var(--accent);opacity:.75;
+}
+.highlights strong{color:var(--ink);font-weight:600}
 
 @media (max-width:640px){
   .profile{padding:16px 0 34px}
@@ -271,7 +284,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
   color:var(--ink);margin:0 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line-2);
 }
-.pub{display:grid;grid-template-columns:34px 1fr;gap:12px;margin-bottom:22px;font-size:15px}
+.pub{display:grid;grid-template-columns:42px 1fr;gap:12px;margin-bottom:22px;font-size:15px}
 .pub:last-child{margin-bottom:0}
 .pub-tag{
   font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-soft);
@@ -289,6 +302,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   margin:8px 0 0;max-width:66ch;
 }
 .pub-note em{color:var(--ink);font-family:var(--mono);font-size:13px;font-style:normal}
+.pub-note strong{color:var(--ink);font-weight:600}
 .pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
 .chip{
   font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);
@@ -426,14 +440,22 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
   <p class="role"><strong>PhD Candidate, Industrial Engineering &amp; Management Sciences</strong> · Northwestern University</p>
   <p class="place">
     <span>Evanston, IL</span><span class="dot"></span>
-    <span>Distributed &amp; Efficient Machine Learning</span>
+    <span>Efficient &amp; Adaptive Machine Learning</span>
   </p>
 
   <p class="lede">
-    I am driven by complex, non-trivial problems where <strong>theory meets practice</strong>.
-    My research focuses on making large-scale training <strong>effective</strong> and <strong>efficient</strong> theory-oriented methods 
-    that remain robust under real-world challenges such as data heterogeneity and class imbalance.
+    I develop <strong>efficient and adaptive machine learning</strong> methods through
+    <strong>optimization theory and algorithm design</strong>. My work studies how low-rank structure
+    and training dynamics let models learn under communication, compute, memory, and data constraints,
+    across federated learning, continual adaptation, and compressed generative models.
   </p>
+
+  <!-- <ul class="highlights" aria-label="Highlights">
+    <li><strong>ICML 2026</strong> paper</li>
+    <li><strong>TMLR</strong> paper</li>
+    <li><strong>2&times;</strong> Intel AI research intern</li>
+    <li>Graduating <strong>June 2027</strong></li>
+  </ul> -->
 
   <div class="links">
     <a class="btn btn-primary" href="assets/resume.pdf">
@@ -529,8 +551,8 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
         </svg>
       </span>
       <div>
-        <strong>Imbalance &amp; Rare Events</strong>
-        <span>Optimization that doesn't ignore the minority class or the one-in-a-thousand defect</span>
+        <strong>Continual Learning</strong>
+        <span>Optimization that continuously adapts to new data stream under resource constraint</span>
       </div>
     </div>
 
@@ -557,43 +579,37 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 
 
 <!-- ============================================================
-     RESEARCH — newest first. Duplicate an <article class="pub">
-     block to add a paper. Wrap your own name in <span class="me">.
+     RESEARCH — published first, then preprints, then work in
+     progress. Duplicate an <article class="pub"> block to add a
+     paper. Wrap your own name in <span class="me">.
+     The .pub-tag holds a short venue label (4 characters max).
      ============================================================ -->
 <section id="research" data-nav="Research">
   <h2>Research</h2>
+<!-- 
+  <p class="research-intro">
+    The common thread is low-rank structure and training dynamics, used to make learning work under
+    communication, compute, memory, and data constraints.
+  </p> -->
 
   <div class="pub-group">
-    <h4>Papers</h4>
+    <h4>PAPERS</h4>
 
     <article class="pub">
-      <div class="pub-tag">P3</div>
-      <div>
-        <p class="pub-title">Privacy-Preserving and Heterogeneity-Aware Federated Deep Clustering<span class="status">Under review</span></p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
-        <p class="pub-venue">Under Review</p>
-        <p class="pub-note">
-          Deep embedded clustering needs global soft-assignment statistics — which, in a federated
-          setting, means clients leaking their cluster composition. Replaces that objective with a
-          locally computable sample-stability loss, adds prediction-balanced sampling to stop local
-          majority clusters from dominating, and periodically restarting mechanism to escape early
-          collapse. Applied to federated time-series anomaly detection with no additional inference-time cost.
-        </p>
-      </div>
-    </article>
-
-    <article class="pub">
-      <div class="pub-tag">P2</div>
+      <div class="pub-tag">ICML</div>
       <div>
         <p class="pub-title">Class-Grouped Normalized Momentum and Faster Hyperparameter Exploration to Tackle Class Imbalance in Federated Learning</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
         <p class="pub-venue">International Conference on Machine Learning (ICML), 2026</p>
         <p class="pub-note">
-          Privacy rules out the usual fixes for long-tailed data, so FedCGNM attacks imbalance at the
-          optimizer instead: group classes by minimizing within-group variance, keep one momentum per
-          group, normalize each to unit length. Every group gets equal pull without the scaling
-          mismatch. Come up with a convergence analysis under time-varying resampling rates and FedHOO, a bandit-based tuner that exploits
-          federated parallelism to evaluate many rate combinations at linear cost.
+          Privacy rules out the usual centralized fixes for long-tailed data, and clients with different
+          local class distributions need different resampling choices. <strong>FedCGNM</strong> handles
+          imbalance in the optimizer: it groups classes by minimizing within-group variance, keeps one
+          momentum per group, and normalizes each group's contribution so minority classes aren't drowned
+          out. <strong>FedHOO</strong>, a hierarchical bandit method, adapts client-specific resampling
+          rates by exploiting federated parallelism. Includes a convergence analysis under time-varying
+          resampling rates. Evaluated on long-tailed image, tabular, network-security, and
+          semiconductor-defect data.
         </p>
         <div class="pub-links">
           <a class="chip" href="https://openreview.net/pdf?id=njBsluG3Nn">Paper</a>
@@ -602,52 +618,71 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
     </article>
 
     <article class="pub">
-      <div class="pub-tag">P1</div>
+      <div class="pub-tag">TMLR</div>
       <div>
-        <p class="pub-title">Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization<span class="status">Under review</span></p>
+        <p class="pub-title">Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">Under review</p>
+        <p class="pub-venue">Transactions on Machine Learning Research (TMLR)</p>
         <p class="pub-note">
-          The first theoretical study of rank structure in federated learning: using random matrix
-          theory, I show a client's Hessian carries a strictly higher stable rank than the server's,
-          and that restricting local updates to a low-rank subspace improves cross-client gradient
-          alignment. FedLoRU turns that into an algorithm — clients optimize low-rank factors, the
-          server accumulates them into a higher-rank model — cutting communication cost while matching full-rank accuracy.
-          Interesting finding that theory and empirical results coincide: lower-rank updates perform
-          better than full-rank updates when the number of clients is large.
+          Federated clients optimize on small, heterogeneous local datasets, so full-rank local updates can
+          follow client-specific directions that don't serve the global objective. Using effective
+          dimensionality (Hessian stable rank), I analyze how local and global optimization geometry differ
+          and when restricting local updates to a low-rank subspace acts as implicit regularization.
+          <strong>FedLoRU</strong> turns this into an algorithm: clients train and communicate low-rank
+          factors, and the server periodically accumulates them, so the model is never confined to one
+          fixed subspace. It cuts communication, and its accuracy advantage over full-rank updates widens
+          as the number of clients grows across the configurations evaluated, on image classification and
+          language-model fine-tuning.
         </p>
         <div class="pub-links">
-          <a class="chip" href="https://arxiv.org/abs/2409.12371">arXiv</a>
+          <a class="chip" href="https://openreview.net/forum?id=MXSAMrmktX">OpenReview</a>
         </div>
+      </div>
+    </article>
+    
+    <article class="pub">
+      <div class="pub-tag">PRE</div>
+      <div>
+        <p class="pub-title">Privacy-Preserving and Heterogeneity-Aware Federated Deep Embedded Clustering<span class="status">Preprint</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
+        <p class="pub-note">
+          Federated deep clustering has to learn shared structure without pooling raw data, while client
+          heterogeneity and aggregation noise destabilize assignments and centroids. <strong>Fed-BRDECS</strong>
+          replaces global soft-assignment statistics with a locally computable sample-stability objective,
+          uses prediction-balanced local sampling so rare predicted clusters stay represented, and restarts
+          biased or inactive centroids. Applied to federated time-series anomaly detection with no additional inference-time cost.
+        </p>
       </div>
     </article>
   </div>
 
   <div class="pub-group">
-    <h4>Works in Progress</h4>
+    <h4>Work in progress</h4>
 
     <article class="pub">
-      <div class="pub-tag">W2</div>
+      <div class="pub-tag">WIP</div>
       <div>
-        <p class="pub-title">Adaptive Low-Precision and Low-Rank Training in Federated Learnin</p>
+        <p class="pub-title">Continual Learning with Decoupled Low-Rank Adaptation</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
         <p class="pub-note">
-          Uncovers an implicit regularization mechanism driven by dynamic precision and rank adaptivity 
-          in distributed systems, proving theoretically and empirically that budget-constrained training 
-          can match or surpass full-resource baselines.
+          How do the magnitude, direction, and displacement of low-rank updates relate to catastrophic
+          forgetting? I study a parameterization that separates update size from a normalized low-rank
+          direction. Decoupling the magnitude and direction of low-rank updates and combining them with sharpness-aware minimization, so a model adapts quickly to new tasks while flatter, more stable update geometry limits catastrophic forgetting.
         </p>
       </div>
     </article>
 
     <article class="pub">
-      <div class="pub-tag">W1</div>
+      <div class="pub-tag">WIP</div>
       <div>
-        <p class="pub-title">Federated Continual Learning with Decoupled LoRA</p>
+        <p class="pub-title">Low-Bit Quantization of Few-Step Flow-Matching Models</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
         <p class="pub-note">
-          Decoupling the magnitude and direction of low-rank updates and combining them with
-          sharpness-aware minimization, so a model adapts quickly to new tasks while flatter,
-          more stable update geometry limits catastrophic forgetting.
+          Low-bit weight quantization perturbs a flow model's velocity predictions. With only a few large
+          sampling steps, those errors redirect the trajectory and accumulate into the final sample, and
+          reconstructing the weights accurately doesn't guarantee the velocity field is preserved. I'm
+          developing a dual low-rank framework that separates shaping the weights before quantization 
+          from correcting the dynamics afterward, including timestep-specific corrections.
         </p>
       </div>
     </article>
@@ -667,7 +702,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
       An end-to-end machine learning system for semiconductor defect and anomaly detection,
       built through my Intel internships and the Northwestern–Intel research project. <strong>Millions of sensor and image samples</strong>
       that are extremely imbalanced and structurally unlike standard vision datasets — defects
-      are small, local, geometric, and rare, so ImageNet intuitions mostly don't transfer.
+      are small, local, geometric, and rare, so natural image (e.g., ImageNet) intuitions mostly don't transfer.
     </p>
     <p>
       Three pieces work together: <strong>federated learning</strong>, so distributed
@@ -760,9 +795,11 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 <section id="contact" data-nav="Contact">
   <h2>Contact</h2>
   <div class="contact-box">
-    <p>I'm finishing my PhD at Northwestern and always glad to talk — about research scientist
-       and applied ML roles, collaborations, or any of the work above. The fastest way to
-       reach me is email.</p>
+    <p>I'm graduating in <strong>June 2027</strong> and looking for <strong>research scientist</strong>,
+       <strong>research engineer</strong>, and <strong>applied scientist</strong> roles in efficient and
+       adaptive ML. That includes parameter-efficient and continual adaptation, model compression,
+       federated and distributed learning, and efficient generative models. I'm also glad to talk about
+       collaborations or any of the work above. Email is the fastest way to reach me.</p>
     <a class="btn btn-primary" href="mailto:haemin.park1@northwestern.edu">haemin.park1@northwestern.edu</a>
   </div>
 </section>
@@ -834,13 +871,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
   "affiliation": { "@type": "Organization", "name": "Northwestern University" },
   "alumniOf": { "@type": "Organization", "name": "Seoul National University" },
   "knowsAbout": [
+    "Efficient Machine Learning",
+    "Low-Rank Adaptation",
     "Federated Learning",
-    "Efficient Training",
-    "Distributed Optimization",
     "Continual Learning",
-    "Class Imbalance",
-    "Anomaly Detection",
-    "Diffusion Models"
+    "Optimization",
+    "Model Quantization",
+    "Diffusion Models",
+    "Anomaly Detection"
   ],
   "sameAs": [
     "https://github.com/haemPark"
