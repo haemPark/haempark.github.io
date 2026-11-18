@@ -1,33 +1,41 @@
 <!-- ============================================================
  PROJECTS — one card. Proprietary system, deliberately no code
- link. Papers from it live in the Publications section.
+ link. Papers from it live in the Research section.
  ============================================================ -->
 <section id="projects" data-nav="Project">
   <h2>Project</h2>
   <article class="card card-lead">
-    <h3>Industrial Chip Anomaly Detection <span class="card-badge">Intel</span></h3>
+    <h3>Industrial AI for Semiconductor Automation <span class="card-badge">Intel</span></h3>
     <p>
-      An end-to-end machine learning system for semiconductor defect and anomaly detection,
-      built through my Intel internships and the Northwestern–Intel research project. <strong>Millions of sensor and image samples</strong>
-      that are extremely imbalanced and structurally unlike standard vision datasets — defects
-      are small, local, geometric, and rare, so natural image (e.g., ImageNet) intuitions mostly don't transfer.
+      An industrial machine learning project with Intel to automate defect and anomaly detection in
+      semiconductor manufacturing, built through my Intel internships and the Northwestern–Intel
+      research collaboration. It works on real manufacturing data —
+      <strong>millions of chip images and sensor samples</strong> — not a curated benchmark.
     </p>
     <p>
-      Three pieces work together: <strong>federated learning</strong>, so distributed
-      manufacturing sites train a shared defect model without images ever leaving the fab —
-      under class imbalance severe enough to break standard aggregation;
-      <strong>continual learning</strong>, so models already in production keep adapting as the
-      process drifts, without retraining from scratch or forgetting what earlier lines taught
-      them; and <strong>unsupervised time-series anomaly detection</strong> over multivariate
-      sensor streams, where nothing is labeled and the failure modes aren't known in advance.
+      That data doesn't look like natural-image datasets. Defects are small, local, and geometric,
+      classes are extremely imbalanced, and intuitions from natural images (e.g., ImageNet) mostly
+      don't transfer. So rather than assume a standard recipe, much of the work is finding the
+      <strong>architecture and optimization methodology</strong> that fit this data: evaluating several
+      architectures for inference latency, energy efficiency, and robustness to class imbalance;
+      building imbalance-aware training from resampling, scheduling, and optimizer design; and adapting
+      diffusion models to chip geometry to synthesize the defects that are too rare to collect.
     </p>
-    <p class="card-role">
+    <p>
+      The manufacturing setting also calls for the two learning paradigms that run through my research.
+      <strong>Federated learning</strong> lets distributed manufacturing sites train a shared model
+      without data ever leaving the fab, under class imbalance severe enough to break standard
+      aggregation, and extends to unsupervised anomaly detection on sensor streams.
+      <strong>Continual learning</strong> keeps models already in production adapting as the process
+      drifts, without retraining from scratch or forgetting what earlier lines taught them.
+    </p>
+    <!-- <p class="card-role">
       I contribute over 90% of the technical work — leading method development, implementation, experimentation, evaluation, and
       analysis, while collaborators supply domain requirements and feedback. Several papers in
-      <a href="#publications">Publications</a> come out of this system, two of them evaluated
+      <a href="#research">Research</a> come out of this system, two of them evaluated
       directly on its data.
-    </p>
-    <div class="tags"><span class="tag">PyTorch</span><span class="tag">Federated</span><span class="tag">Continual</span><span class="tag">Time-Series</span><span class="tag">Anomaly Detection</span></div>
+    </p> -->
+    <div class="tags"><span class="tag">Industrial AI</span><span class="tag">Semiconductor Manufacturing</span><span class="tag">Federated Learning</span><span class="tag">Continual Learning</span><span class="tag">Class Imbalance</span><span class="tag">Anomaly Detection</span></div>
     <p class="card-note">Proprietary — no public code.</p>
   </article>
 </section>

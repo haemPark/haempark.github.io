@@ -10,8 +10,6 @@
 .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
 .card p{font-size:14.5px;color:var(--ink-2);margin:0 0 14px}
 .card .tags{margin-top:auto}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-.tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--line-2);padding:2px 8px;border-radius:5px}
 .card-links{display:flex;gap:14px;font-size:13.5px;font-weight:500}
 .card-note{font-size:12.5px;color:var(--muted);margin:0!important;font-style:italic}
 

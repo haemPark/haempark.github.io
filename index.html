@@ -106,6 +106,10 @@ html[data-theme="dark"] .btn-primary{color:#0e0f11}
 .btn-primary:hover{color:#fff;filter:brightness(1.08)}
 html[data-theme="dark"] .btn-primary:hover{color:#0e0f11}
 
+/* Shared keyword tags, used by the research and project sections */
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--line-2);padding:2px 8px;border-radius:5px}
+
 footer{
   padding:28px 0 44px;border-top:1px solid var(--line-2);
   font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
@@ -303,12 +307,27 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 }
 .pub-note em{color:var(--ink);font-family:var(--mono);font-size:13px;font-style:normal}
 .pub-note strong{color:var(--ink);font-weight:600}
-.pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.pub .tags{margin:10px 0 0}
+/* Paper links. PDF (self-hosted) is the primary action: filled with the accent and a
+   document icon. External links (venue, arXiv) are accent-outlined with a ↗ arrow.
+   Styling keys off the href, so no extra classes are needed in the HTML. */
+.pub-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .chip{
-  font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);
-  color:var(--muted);transition:border-color .15s,color .15s;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:600;line-height:1.3;padding:4px 12px;border-radius:99px;
+  border:1px solid var(--accent);color:var(--accent);background:var(--surface);
+  transition:background-color .15s,color .15s,transform .15s,filter .15s;
 }
-.chip:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.chip:hover{background:var(--accent-soft);text-decoration:none;transform:translateY(-1px)}
+.chip[href^="http"]::after{content:"\2197";font-weight:500;font-size:.95em}
+.chip[href$=".pdf"]{background:var(--accent);color:#fff}
+.chip[href$=".pdf"]:hover{background:var(--accent);filter:brightness(1.1)}
+html[data-theme="dark"] .chip[href$=".pdf"]{color:#0e0f11}
+.chip[href$=".pdf"]::before{
+  content:"";width:13px;height:13px;flex:none;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M8 13h8M8 17h5'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M8 13h8M8 17h5'/%3E%3C/svg%3E") center/contain no-repeat;
+}
 .status{
   font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
   padding:1px 7px;border-radius:4px;background:var(--line-2);color:var(--muted);margin-left:6px;
@@ -333,8 +352,6 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
 .card p{font-size:14.5px;color:var(--ink-2);margin:0 0 14px}
 .card .tags{margin-top:auto}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-.tag{font-size:11.5px;font-family:var(--mono);color:var(--muted);background:var(--line-2);padding:2px 8px;border-radius:5px}
 .card-links{display:flex;gap:14px;font-size:13.5px;font-weight:500}
 .card-note{font-size:12.5px;color:var(--muted);margin:0!important;font-style:italic}
 
@@ -611,8 +628,12 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
           resampling rates. Evaluated on long-tailed image, tabular, network-security, and
           semiconductor-defect data.
         </p>
+        <div class="tags"><span class="tag">Class Imbalance</span><span class="tag">Normalized Momentum</span><span class="tag">Federated Learning</span><span class="tag">Hyperparameter Optimization</span><span class="tag">Bandit Algorithms</span></div>
         <div class="pub-links">
-          <a class="chip" href="https://openreview.net/pdf?id=njBsluG3Nn">Paper</a>
+          <a class="chip" href="assets/papers/fedcgnm-icml2026.pdf">PDF</a>
+          <a class="chip" href="https://proceedings.mlr.press/v306/park26g.html">ICML</a>
+          <!-- <a class="chip" href="https://openreview.net/forum?id=njBsluG3Nn">OpenReview</a>
+          <a class="chip" href="https://arxiv.org/abs/2607.01474">arXiv</a> -->
         </div>
       </div>
     </article>
@@ -622,7 +643,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
       <div>
         <p class="pub-title">Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">Transactions on Machine Learning Research (TMLR)</p>
+        <p class="pub-venue">Transactions on Machine Learning Research (TMLR), 2026</p>
         <p class="pub-note">
           Federated clients optimize on small, heterogeneous local datasets, so full-rank local updates can
           follow client-specific directions that don't serve the global objective. Using effective
@@ -634,8 +655,11 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
           as the number of clients grows across the configurations evaluated, on image classification and
           language-model fine-tuning.
         </p>
+        <div class="tags"><span class="tag">Efficient Training</span><span class="tag">Federated Learning</span><span class="tag">Low-Rank Training</span><span class="tag">Random Matrix Theory</span><span class="tag">LLM Fine-Tuning</span></div>
         <div class="pub-links">
-          <a class="chip" href="https://openreview.net/forum?id=MXSAMrmktX">OpenReview</a>
+          <a class="chip" href="assets/papers/fedloru-tmlr2026.pdf">PDF</a>
+          <a class="chip" href="https://openreview.net/forum?id=MXSAMrmktX">TMLR</a>
+          <!-- <a class="chip" href="https://arxiv.org/abs/2409.12371">arXiv</a> -->
         </div>
       </div>
     </article>
@@ -643,8 +667,35 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
     <article class="pub">
       <div class="pub-tag">PRE</div>
       <div>
+        <p class="pub-title">Decoupling Conditioning and Correction LoRAs for Low-Bit Few-Step Diffusion<span class="status">Preprint</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
+        <p class="pub-venue">Preprint, Under Review</p>
+        <p class="pub-note">
+          Few-step diffusion is dominated by the cost of a handful of backbone passes, so low-bit
+          quantization is the natural lever, but at 3-bit weights and 4-bit activations quality degrades,
+          and each step's error feeds into the next. Low-rank compensation subtracts a matrix before
+          quantizing and deploys a small high-precision correction afterward; existing methods either skip
+          the subtraction or tie it to the correction. <strong>M-DualLoRA</strong> keeps them separate: a
+          conditioner that only shapes what the quantizer sees and is then discarded, and a correction that
+          is refit to the resulting backbone and refined on the quantized model's own sampling
+          trajectories, with a guarantee that the refit never leaves more layer error than deploying the
+          conditioner itself. At W3A4 it gives the highest PSNR and lowest LPIPS among operator-matched
+          baselines on two UNets (SD-Turbo, SDXL-Turbo) and two diffusion transformers (SANA-1.6B,
+          PixArt-LCM).
+        </p>
+        <div class="tags"><span class="tag">Diffusion Models</span><span class="tag">Post-Training Quantization</span><span class="tag">Low-Rank Compensation</span><span class="tag">Few-Step Generation</span><span class="tag">Efficient Inference</span></div>
+        <div class="pub-links">
+          <a class="chip" href="assets/papers/m-duallora.pdf">PDF</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="pub-tag">PRE</div>
+      <div>
         <p class="pub-title">Privacy-Preserving and Heterogeneity-Aware Federated Deep Embedded Clustering<span class="status">Preprint</span></p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
+        <p class="pub-venue">Preprint, Under Review</p>
         <p class="pub-note">
           Federated deep clustering has to learn shared structure without pooling raw data, while client
           heterogeneity and aggregation noise destabilize assignments and centroids. <strong>Fed-BRDECS</strong>
@@ -652,6 +703,11 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
           uses prediction-balanced local sampling so rare predicted clusters stay represented, and restarts
           biased or inactive centroids. Applied to federated time-series anomaly detection with no additional inference-time cost.
         </p>
+        <div class="tags"><span class="tag">Federated Learning</span><span class="tag">Deep Clustering</span><span class="tag">Unsupervised Learning</span><span class="tag">Privacy-Preserving ML</span><span class="tag">Non-IID Data</span><span class="tag">Time-Series Anomaly Detection</span></div>
+        <div class="pub-links">
+          <a class="chip" href="assets/papers/fed-brdecs.pdf">PDF</a>
+          <a class="chip" href="https://arxiv.org/abs/2610.07399">arXiv</a>
+        </div>
       </div>
     </article>
   </div>
@@ -669,21 +725,7 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
           forgetting? I study a parameterization that separates update size from a normalized low-rank
           direction. Decoupling the magnitude and direction of low-rank updates and combining them with sharpness-aware minimization, so a model adapts quickly to new tasks while flatter, more stable update geometry limits catastrophic forgetting.
         </p>
-      </div>
-    </article>
-
-    <article class="pub">
-      <div class="pub-tag">WIP</div>
-      <div>
-        <p class="pub-title">Low-Bit Quantization of Few-Step Flow-Matching Models</p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-note">
-          Low-bit weight quantization perturbs a flow model's velocity predictions. With only a few large
-          sampling steps, those errors redirect the trajectory and accumulate into the final sample, and
-          reconstructing the weights accurately doesn't guarantee the velocity field is preserved. I'm
-          developing a dual low-rank framework that separates shaping the weights before quantization 
-          from correcting the dynamics afterward, including timestep-specific corrections.
-        </p>
+        <div class="tags"><span class="tag">Continual Learning</span><span class="tag">Low-Rank Adaptation</span><span class="tag">Catastrophic Forgetting</span><span class="tag">Sharpness-Aware Minimization</span></div>
       </div>
     </article>
   </div>
@@ -692,34 +734,42 @@ html[data-theme="dark"] .avatar-fallback{color:#0e0f11}
 
 <!-- ============================================================
  PROJECTS — one card. Proprietary system, deliberately no code
- link. Papers from it live in the Publications section.
+ link. Papers from it live in the Research section.
  ============================================================ -->
 <section id="projects" data-nav="Project">
   <h2>Project</h2>
   <article class="card card-lead">
-    <h3>Industrial Chip Anomaly Detection <span class="card-badge">Intel</span></h3>
+    <h3>Industrial AI for Semiconductor Automation <span class="card-badge">Intel</span></h3>
     <p>
-      An end-to-end machine learning system for semiconductor defect and anomaly detection,
-      built through my Intel internships and the Northwestern–Intel research project. <strong>Millions of sensor and image samples</strong>
-      that are extremely imbalanced and structurally unlike standard vision datasets — defects
-      are small, local, geometric, and rare, so natural image (e.g., ImageNet) intuitions mostly don't transfer.
+      An industrial machine learning project with Intel to automate defect and anomaly detection in
+      semiconductor manufacturing, built through my Intel internships and the Northwestern–Intel
+      research collaboration. It works on real manufacturing data —
+      <strong>millions of chip images and sensor samples</strong> — not a curated benchmark.
     </p>
     <p>
-      Three pieces work together: <strong>federated learning</strong>, so distributed
-      manufacturing sites train a shared defect model without images ever leaving the fab —
-      under class imbalance severe enough to break standard aggregation;
-      <strong>continual learning</strong>, so models already in production keep adapting as the
-      process drifts, without retraining from scratch or forgetting what earlier lines taught
-      them; and <strong>unsupervised time-series anomaly detection</strong> over multivariate
-      sensor streams, where nothing is labeled and the failure modes aren't known in advance.
+      That data doesn't look like natural-image datasets. Defects are small, local, and geometric,
+      classes are extremely imbalanced, and intuitions from natural images (e.g., ImageNet) mostly
+      don't transfer. So rather than assume a standard recipe, much of the work is finding the
+      <strong>architecture and optimization methodology</strong> that fit this data: evaluating several
+      architectures for inference latency, energy efficiency, and robustness to class imbalance;
+      building imbalance-aware training from resampling, scheduling, and optimizer design; and adapting
+      diffusion models to chip geometry to synthesize the defects that are too rare to collect.
     </p>
-    <p class="card-role">
+    <p>
+      The manufacturing setting also calls for the two learning paradigms that run through my research.
+      <strong>Federated learning</strong> lets distributed manufacturing sites train a shared model
+      without data ever leaving the fab, under class imbalance severe enough to break standard
+      aggregation, and extends to unsupervised anomaly detection on sensor streams.
+      <strong>Continual learning</strong> keeps models already in production adapting as the process
+      drifts, without retraining from scratch or forgetting what earlier lines taught them.
+    </p>
+    <!-- <p class="card-role">
       I contribute over 90% of the technical work — leading method development, implementation, experimentation, evaluation, and
       analysis, while collaborators supply domain requirements and feedback. Several papers in
-      <a href="#publications">Publications</a> come out of this system, two of them evaluated
+      <a href="#research">Research</a> come out of this system, two of them evaluated
       directly on its data.
-    </p>
-    <div class="tags"><span class="tag">PyTorch</span><span class="tag">Federated</span><span class="tag">Continual</span><span class="tag">Time-Series</span><span class="tag">Anomaly Detection</span></div>
+    </p> -->
+    <div class="tags"><span class="tag">Industrial AI</span><span class="tag">Semiconductor Manufacturing</span><span class="tag">Federated Learning</span><span class="tag">Continual Learning</span><span class="tag">Class Imbalance</span><span class="tag">Anomaly Detection</span></div>
     <p class="card-note">Proprietary — no public code.</p>
   </article>
 </section>

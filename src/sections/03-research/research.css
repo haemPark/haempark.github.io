@@ -31,12 +31,27 @@
 }
 .pub-note em{color:var(--ink);font-family:var(--mono);font-size:13px;font-style:normal}
 .pub-note strong{color:var(--ink);font-weight:600}
-.pub-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.pub .tags{margin:10px 0 0}
+/* Paper links. PDF (self-hosted) is the primary action: filled with the accent and a
+   document icon. External links (venue, arXiv) are accent-outlined with a ↗ arrow.
+   Styling keys off the href, so no extra classes are needed in the HTML. */
+.pub-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .chip{
-  font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);
-  color:var(--muted);transition:border-color .15s,color .15s;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:600;line-height:1.3;padding:4px 12px;border-radius:99px;
+  border:1px solid var(--accent);color:var(--accent);background:var(--surface);
+  transition:background-color .15s,color .15s,transform .15s,filter .15s;
 }
-.chip:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.chip:hover{background:var(--accent-soft);text-decoration:none;transform:translateY(-1px)}
+.chip[href^="http"]::after{content:"\2197";font-weight:500;font-size:.95em}
+.chip[href$=".pdf"]{background:var(--accent);color:#fff}
+.chip[href$=".pdf"]:hover{background:var(--accent);filter:brightness(1.1)}
+html[data-theme="dark"] .chip[href$=".pdf"]{color:#0e0f11}
+.chip[href$=".pdf"]::before{
+  content:"";width:13px;height:13px;flex:none;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M8 13h8M8 17h5'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M8 13h8M8 17h5'/%3E%3C/svg%3E") center/contain no-repeat;
+}
 .status{
   font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
   padding:1px 7px;border-radius:4px;background:var(--line-2);color:var(--muted);margin-left:6px;

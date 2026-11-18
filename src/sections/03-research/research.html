@@ -31,8 +31,12 @@
           resampling rates. Evaluated on long-tailed image, tabular, network-security, and
           semiconductor-defect data.
         </p>
+        <div class="tags"><span class="tag">Class Imbalance</span><span class="tag">Normalized Momentum</span><span class="tag">Federated Learning</span><span class="tag">Hyperparameter Optimization</span><span class="tag">Bandit Algorithms</span></div>
         <div class="pub-links">
-          <a class="chip" href="https://openreview.net/pdf?id=njBsluG3Nn">Paper</a>
+          <a class="chip" href="assets/papers/fedcgnm-icml2026.pdf">PDF</a>
+          <a class="chip" href="https://proceedings.mlr.press/v306/park26g.html">ICML</a>
+          <!-- <a class="chip" href="https://openreview.net/forum?id=njBsluG3Nn">OpenReview</a>
+          <a class="chip" href="https://arxiv.org/abs/2607.01474">arXiv</a> -->
         </div>
       </div>
     </article>
@@ -42,7 +46,7 @@
       <div>
         <p class="pub-title">Communication-Efficient Federated Low-Rank Update Algorithm and its Connection to Implicit Regularization</p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-venue">Transactions on Machine Learning Research (TMLR)</p>
+        <p class="pub-venue">Transactions on Machine Learning Research (TMLR), 2026</p>
         <p class="pub-note">
           Federated clients optimize on small, heterogeneous local datasets, so full-rank local updates can
           follow client-specific directions that don't serve the global objective. Using effective
@@ -54,8 +58,11 @@
           as the number of clients grows across the configurations evaluated, on image classification and
           language-model fine-tuning.
         </p>
+        <div class="tags"><span class="tag">Efficient Training</span><span class="tag">Federated Learning</span><span class="tag">Low-Rank Training</span><span class="tag">Random Matrix Theory</span><span class="tag">LLM Fine-Tuning</span></div>
         <div class="pub-links">
-          <a class="chip" href="https://openreview.net/forum?id=MXSAMrmktX">OpenReview</a>
+          <a class="chip" href="assets/papers/fedloru-tmlr2026.pdf">PDF</a>
+          <a class="chip" href="https://openreview.net/forum?id=MXSAMrmktX">TMLR</a>
+          <!-- <a class="chip" href="https://arxiv.org/abs/2409.12371">arXiv</a> -->
         </div>
       </div>
     </article>
@@ -63,8 +70,35 @@
     <article class="pub">
       <div class="pub-tag">PRE</div>
       <div>
+        <p class="pub-title">Decoupling Conditioning and Correction LoRAs for Low-Bit Few-Step Diffusion<span class="status">Preprint</span></p>
+        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
+        <p class="pub-venue">Preprint, Under Review</p>
+        <p class="pub-note">
+          Few-step diffusion is dominated by the cost of a handful of backbone passes, so low-bit
+          quantization is the natural lever, but at 3-bit weights and 4-bit activations quality degrades,
+          and each step's error feeds into the next. Low-rank compensation subtracts a matrix before
+          quantizing and deploys a small high-precision correction afterward; existing methods either skip
+          the subtraction or tie it to the correction. <strong>M-DualLoRA</strong> keeps them separate: a
+          conditioner that only shapes what the quantizer sees and is then discarded, and a correction that
+          is refit to the resulting backbone and refined on the quantized model's own sampling
+          trajectories, with a guarantee that the refit never leaves more layer error than deploying the
+          conditioner itself. At W3A4 it gives the highest PSNR and lowest LPIPS among operator-matched
+          baselines on two UNets (SD-Turbo, SDXL-Turbo) and two diffusion transformers (SANA-1.6B,
+          PixArt-LCM).
+        </p>
+        <div class="tags"><span class="tag">Diffusion Models</span><span class="tag">Post-Training Quantization</span><span class="tag">Low-Rank Compensation</span><span class="tag">Few-Step Generation</span><span class="tag">Efficient Inference</span></div>
+        <div class="pub-links">
+          <a class="chip" href="assets/papers/m-duallora.pdf">PDF</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="pub-tag">PRE</div>
+      <div>
         <p class="pub-title">Privacy-Preserving and Heterogeneity-Aware Federated Deep Embedded Clustering<span class="status">Preprint</span></p>
         <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan, Martin W. Braun, Xiuqi Li, Balakrishnan Ananthanarayanan</p>
+        <p class="pub-venue">Preprint, Under Review</p>
         <p class="pub-note">
           Federated deep clustering has to learn shared structure without pooling raw data, while client
           heterogeneity and aggregation noise destabilize assignments and centroids. <strong>Fed-BRDECS</strong>
@@ -72,6 +106,11 @@
           uses prediction-balanced local sampling so rare predicted clusters stay represented, and restarts
           biased or inactive centroids. Applied to federated time-series anomaly detection with no additional inference-time cost.
         </p>
+        <div class="tags"><span class="tag">Federated Learning</span><span class="tag">Deep Clustering</span><span class="tag">Unsupervised Learning</span><span class="tag">Privacy-Preserving ML</span><span class="tag">Non-IID Data</span><span class="tag">Time-Series Anomaly Detection</span></div>
+        <div class="pub-links">
+          <a class="chip" href="assets/papers/fed-brdecs.pdf">PDF</a>
+          <a class="chip" href="https://arxiv.org/abs/2610.07399">arXiv</a>
+        </div>
       </div>
     </article>
   </div>
@@ -89,21 +128,7 @@
           forgetting? I study a parameterization that separates update size from a normalized low-rank
           direction. Decoupling the magnitude and direction of low-rank updates and combining them with sharpness-aware minimization, so a model adapts quickly to new tasks while flatter, more stable update geometry limits catastrophic forgetting.
         </p>
-      </div>
-    </article>
-
-    <article class="pub">
-      <div class="pub-tag">WIP</div>
-      <div>
-        <p class="pub-title">Low-Bit Quantization of Few-Step Flow-Matching Models</p>
-        <p class="pub-authors"><span class="me">Haemin Park</span>, Diego Klabjan</p>
-        <p class="pub-note">
-          Low-bit weight quantization perturbs a flow model's velocity predictions. With only a few large
-          sampling steps, those errors redirect the trajectory and accumulate into the final sample, and
-          reconstructing the weights accurately doesn't guarantee the velocity field is preserved. I'm
-          developing a dual low-rank framework that separates shaping the weights before quantization 
-          from correcting the dynamics afterward, including timestep-specific corrections.
-        </p>
+        <div class="tags"><span class="tag">Continual Learning</span><span class="tag">Low-Rank Adaptation</span><span class="tag">Catastrophic Forgetting</span><span class="tag">Sharpness-Aware Minimization</span></div>
       </div>
     </article>
   </div>
